@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BMW Tools Updates</title>
+<meta name="description" content="Is there an update for what MGU Launcher ships? Checked live on GitHub.">
+<meta name="theme-color" content="#16181c">
+<style>
+  :root {
+    --bg: #f4f5f7; --card: #ffffff; --text: #16181c; --muted: #5d6470; --line: #e2e5ea;
+    --green: #1a7f37; --green-bg: #dafbe1; --amber: #9a6700; --amber-bg: #fff4d4;
+    --grey: #57606a; --grey-bg: #eaeef2; --red: #cf222e; --red-bg: #ffebe9; --accent: #0969da;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #16181c; --card: #1f2228; --text: #e8eaed; --muted: #9aa1ab; --line: #30343b;
+      --green: #56d364; --green-bg: #0f2f1a; --amber: #f0c674; --amber-bg: #3d2e04;
+      --grey: #b0b6be; --grey-bg: #30343b; --red: #ff7b72; --red-bg: #3d1416; --accent: #79c0ff;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #16181c; --card: #1f2228; --text: #e8eaed; --muted: #9aa1ab; --line: #30343b;
+    --green: #56d364; --green-bg: #0f2f1a; --amber: #f0c674; --amber-bg: #3d2e04;
+    --grey: #b0b6be; --grey-bg: #30343b; --red: #ff7b72; --red-bg: #3d1416; --accent: #79c0ff;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 15px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    padding: max(16px, env(safe-area-inset-top)) 16px max(24px, env(safe-area-inset-bottom));
+  }
+  main { max-width: 640px; margin: 0 auto; }
+  header { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+  h1 { font-size: 20px; margin: 0 0 2px; letter-spacing: .2px; }
+  .sub { color: var(--muted); font-size: 13px; }
+  button {
+    font: inherit; font-weight: 600; font-size: 14px; color: var(--text); background: var(--card);
+    border: 1px solid var(--line); border-radius: 10px; padding: 9px 14px; cursor: pointer; white-space: nowrap;
+  }
+  button:disabled { opacity: .55; }
+  .overall { border-radius: 14px; padding: 14px 16px; margin-bottom: 14px; font-weight: 700; font-size: 16px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; margin-bottom: 12px; }
+  .row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .card h2 { font-size: 13px; letter-spacing: 1px; margin: 0; color: var(--muted); }
+  .pill { font-size: 12px; font-weight: 700; letter-spacing: .4px; border-radius: 999px; padding: 4px 10px; white-space: nowrap; }
+  .s-current { color: var(--green); background: var(--green-bg); }
+  .s-available { color: var(--amber); background: var(--amber-bg); }
+  .s-checking, .s-offline { color: var(--grey); background: var(--grey-bg); }
+  .s-error { color: var(--red); background: var(--red-bg); }
+  .what { margin: 8px 0 0; font-size: 14px; }
+  ul { margin: 8px 0 0; padding: 0; list-style: none; }
+  li { display: flex; justify-content: space-between; gap: 10px; padding: 7px 0; border-top: 1px solid var(--line); font-size: 14px; }
+  li span:first-child { overflow-wrap: anywhere; }
+  .v { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 13px; white-space: nowrap; }
+  .new { color: var(--amber); font-weight: 600; }
+  .commits li { display: block; color: var(--muted); font-size: 13px; }
+  .commits b { color: var(--text); font-weight: 600; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 12px; }
+  details { margin-top: 6px; }
+  summary { cursor: pointer; color: var(--accent); font-size: 13px; padding: 4px 0; }
+  a { color: var(--accent); }
+  footer { color: var(--muted); font-size: 12px; margin-top: 18px; text-align: center; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div>
+      <h1>BMW Tools Updates</h1>
+      <div class="sub" id="shipped">Loading what MGU Launcher ships…</div>
+    </div>
+    <button id="refresh" type="button">Refresh</button>
+  </header>
+
+  <div class="overall s-checking" id="overall">Checking GitHub…</div>
+
+  <section class="card" id="apps">
+    <div class="row"><h2>APPS · idrive7-apps</h2><span class="pill s-checking">CHECKING…</span></div>
+    <p class="what"></p><ul></ul>
+  </section>
+  <section class="card" id="carplay">
+    <div class="row"><h2>CARPLAY · cluster map</h2><span class="pill s-checking">CHECKING…</span></div>
+    <p class="what"></p><ul></ul>
+  </section>
+  <section class="card" id="nbt">
+    <div class="row"><h2>ANDROID AUTO · NBT-AAD</h2><span class="pill s-checking">CHECKING…</span></div>
+    <p class="what"></p><ul></ul>
+  </section>
+
+  <footer id="foot">Checked live on GitHub each time this page opens (about 5 GitHub calls; GitHub allows 60 an hour per network).</footer>
+</main>
+
+<script>
+"use strict";
+const API = "https://api.github.com/repos/";
+const LABEL = { current: "UP TO DATE", available: "UPDATE AVAILABLE", checking: "CHECKING…", offline: "OFFLINE", error: "ERROR" };
+const key = v => (String(v || "").match(/\d+/g) || []).slice(0, 3).map(Number);
+const newer = (a, b) => { const x = key(a), y = key(b); for (let i = 0; i < 3; i++) { if ((x[i] || 0) !== (y[i] || 0)) return (x[i] || 0) > (y[i] || 0); } return false; };
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+class RateLimited extends Error {}
+async function gh(path) {
+  const r = await fetch(API + path, { headers: { Accept: "application/vnd.github+json" }, cache: "no-store" });
+  if (r.status === 403 || r.status === 429) {
+    const reset = Number(r.headers.get("x-ratelimit-reset")) * 1000;
+    const mins = reset ? Math.max(1, Math.ceil((reset - Date.now()) / 60000)) : 60;
+    throw new RateLimited(`GitHub's hourly limit for this network was reached - try again in ~${mins} min.`);
+  }
+  if (!r.ok) throw new Error(`GitHub answered HTTP ${r.status} for ${path}`);
+  return r.json();
+}
+
+function paint(id, state, what, items, extra) {
+  const card = document.getElementById(id);
+  const pill = card.querySelector(".pill");
+  pill.className = "pill s-" + state;
+  pill.textContent = LABEL[state];
+  card.querySelector(".what").innerHTML = what || "";
+  card.querySelector("ul").innerHTML = (items || []).join("");
+  card.querySelectorAll("details").forEach(d => d.remove());
+  if (extra) card.insertAdjacentHTML("beforeend", extra);
+  return state;
+}
+const item = (name, have, now, isNew) =>
+  `<li><span>${esc(name)}</span><span class="v ${isNew ? "new" : ""}">${have ? esc(have) + " → " : "new · "}${esc(now)}</span></li>`;
+
+async function checkApps(s) {
+  const repo = s.apps.source, sha = s.apps.head_sha;
+  const list = await gh(`${repo}/contents/apps?ref=main`);
+  const ids = list.filter(e => e.type === "dir").map(e => e.name);
+  const remote = {};
+  await Promise.all(ids.map(async id => {
+    const r = await fetch(`https://raw.githubusercontent.com/${repo}/main/apps/${id}/app.json`, { cache: "no-store" });
+    if (r.ok) { try { remote[id] = String((await r.json()).version || ""); } catch (e) { /* not an app */ } }
+  }));
+  const deltas = Object.keys(remote).sort().filter(id => remote[id] && remote[id] !== s.apps.versions[id]);
+  let extra = "";
+  try {
+    const cmp = await gh(`${repo}/compare/${sha}...main`);
+    if (cmp.ahead_by) {
+      const rows = cmp.commits.slice(-15).reverse().map(c =>
+        `<li><b>${esc(c.sha.slice(0, 7))}</b> ${esc(c.commit.message.split("\n")[0])}</li>`).join("");
+      extra = `<details><summary>${cmp.ahead_by} new commit(s) upstream since ${esc(sha)}</summary><ul class="commits">${rows}</ul></details>`;
+    }
+  } catch (e) { if (e instanceof RateLimited) throw e; }
+  if (!deltas.length) {
+    return paint("apps", "current", `All ${Object.keys(remote).length} apps match what the Launcher ships.`, [], extra);
+  }
+  return paint("apps", "available",
+    `${deltas.length} app(s) changed upstream - Launcher: CUSTOM APPS → UPDATE…, then BUILD and UPDATE ON CAR.`,
+    deltas.map(id => item(id, s.apps.versions[id], remote[id], true)), extra);
+}
+
+async function checkCarplay(s) {
+  const latest = {};
+  for (const repo of [...new Set(s.carplay.packages.map(p => p.repo))]) {
+    for (const r of await gh(`${repo}/releases?per_page=100`)) {
+      const m = /^(.+)@(\d+\.\d+\.\d+)$/.exec(r.tag_name || "");
+      if (m && !r.draft && !r.prerelease && (!latest[m[1]] || newer(m[2], latest[m[1]]))) latest[m[1]] = m[2];
+    }
+  }
+  const rows = s.carplay.packages.map(p => {
+    const now = latest[p.id] || p.version;
+    return { p, now, up: newer(now, p.version) };
+  });
+  const ups = rows.filter(r => r.up);
+  return paint("carplay", ups.length ? "available" : "current",
+    ups.length ? `${ups.length} package(s) newer upstream - Launcher: CARPLAY CLUSTER → UPDATE….`
+               : "The CarPlay map packages match what the Launcher ships.",
+    rows.map(r => item(r.p.id, r.p.version, r.now, r.up)));
+}
+
+async function checkNbt(s) {
+  const rels = await gh(`${s.nbtaad.source}/releases?per_page=30`);
+  const named = rels.filter(r => !r.draft && !r.prerelease && /v\d+\.\d+\.\d+/.test(`${r.name} ${r.tag_name}`))
+                    .sort((a, b) => (b.published_at || "").localeCompare(a.published_at || ""));
+  if (!named.length) return paint("nbt", "current", "No official release names a version.");
+  const r = named[0], v = /v\d+\.\d+\.\d+(?:-[A-Za-z0-9_.]+)?/.exec(`${r.name} ${r.tag_name}`)[0];
+  const up = newer(v, s.nbtaad.version);
+  return paint("nbt", up ? "available" : "current",
+    up ? `New release <a href="${esc(r.html_url)}">${esc(r.name || r.tag_name)}</a> (${esc((r.published_at || "").slice(0, 10))}) - NBT EVO Launcher downloads it on ANDROID AUTO.`
+       : `Newest official release: <a href="${esc(r.html_url)}">${esc(r.name || r.tag_name)}</a>.`,
+    [item("nbt-aad", s.nbtaad.version, v, up)]);
+}
+
+async function run() {
+  const btn = document.getElementById("refresh"), overall = document.getElementById("overall");
+  btn.disabled = true;
+  overall.className = "overall s-checking"; overall.textContent = "Checking GitHub…";
+  ["apps", "carplay", "nbt"].forEach(id => paint(id, "checking", ""));
+  let shipped;
+  try {
+    const r = await fetch("shipped.json", { cache: "no-store" });
+    shipped = await r.json();
+  } catch (e) {
+    overall.className = "overall s-offline"; overall.textContent = "Offline - couldn't load the page's data.";
+    btn.disabled = false; return;
+  }
+  document.getElementById("shipped").textContent =
+    `MGU Launcher ${shipped.launcher} · NBT EVO Launcher ${shipped.nbtevo} · shipped list of ${shipped.updated.slice(0, 10)}`;
+  const results = await Promise.all([["apps", checkApps], ["carplay", checkCarplay], ["nbt", checkNbt]].map(async ([id, fn]) => {
+    try { return await fn(shipped); }
+    catch (e) {
+      const off = e instanceof RateLimited || e instanceof TypeError;
+      return paint(id, off ? "offline" : "error", esc(off && e instanceof TypeError ? "No connection to GitHub." : e.message));
+    }
+  }));
+  const n = results.filter(s => s === "available").length;
+  const bad = results.filter(s => s === "offline" || s === "error").length;
+  overall.className = "overall s-" + (n ? "available" : bad ? "offline" : "current");
+  overall.textContent = n ? `${n} of 3 have an update` : bad ? "Couldn't check everything - see below" : "Everything is up to date";
+  document.getElementById("foot").textContent =
+    `Checked ${new Date().toLocaleString()} · live on GitHub (about 5 calls per check; 60 an hour per network).`;
+  btn.disabled = false;
+}
+
+document.getElementById("refresh").addEventListener("click", run);
+run();
+</script>
+</body>
+</html>
