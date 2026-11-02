@@ -58,6 +58,9 @@
            border-radius: 6px; padding: 1px 6px; margin-right: 6px; vertical-align: 1px; }
   .gone { color: var(--muted); text-decoration: line-through; }
   .commits li { display: block; color: var(--muted); font-size: 13px; }
+  .commits .body { white-space: pre-wrap; margin-top: 4px; color: var(--muted); }
+  .commits a { font-weight: 600; }
+  .rel { display: inline-block; margin-top: 6px; font-size: 13px; }
   .commits b { color: var(--text); font-weight: 600; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 12px; }
   details { margin-top: 6px; }
   summary { cursor: pointer; color: var(--accent); font-size: 13px; padding: 4px 0; }
@@ -124,6 +127,10 @@ function paint(id, state, what, items, extra) {
   if (extra) card.insertAdjacentHTML("beforeend", extra);
   return state;
 }
+// A "what's new" block: open when there is an update, folded otherwise.
+const notes = (open, title, lines, link) =>
+  `<details${open ? " open" : ""}><summary>${title}</summary><ul class="commits">${lines}</ul>` +
+  (link ? `<a class="rel" href="${esc(link)}">release page →</a>` : "") + "</details>";
 const item = (name, have, now, isNew) =>
   `<li><span>${esc(name)}</span><span class="v ${isNew ? "new" : ""}">${have ? esc(have) + " → " : "new · "}${esc(now)}</span></li>`;
 
@@ -147,13 +154,14 @@ async function checkApps(s) {
     return `<li><span>${name}</span><span class="v ${isNew || changed ? "new" : ""}">${ver}</span></li>`;
   }).concat(Object.keys(ours).filter(id => !(id in remote)).sort().map(id =>
     `<li><span class="gone">${esc(id)}</span><span class="v">removed by the vendor</span></li>`));
+  // What's new: the vendor publishes no releases - its commits are the notes ("G-Force 1.6.17: ...").
   let extra = "";
   try {
     const cmp = await gh(`${repo}/compare/${sha}...main`);
     if (cmp.ahead_by) {
-      const rows = cmp.commits.slice(-15).reverse().map(c =>
-        `<li><b>${esc(c.sha.slice(0, 7))}</b> ${esc(c.commit.message.split("\n")[0])}</li>`).join("");
-      extra = `<details><summary>${cmp.ahead_by} new commit(s) upstream since ${esc(sha)}</summary><ul class="commits">${rows}</ul></details>`;
+      const lines = cmp.commits.slice(-20).reverse().map(c =>
+        `<li><b>${esc(c.commit.author.date.slice(0, 10))}</b> ${esc(c.commit.message.split("\n")[0])}</li>`).join("");
+      extra = notes(deltas.length > 0, `What's new upstream - ${cmp.ahead_by} change(s) since ${esc(sha)}`, lines);
     }
   } catch (e) { if (e instanceof RateLimited) throw e; }
   if (!deltas.length) {
@@ -166,35 +174,58 @@ async function checkApps(s) {
 }
 
 async function checkCarplay(s) {
-  const latest = {};
+  const latest = {};                       // package -> its newest release
   for (const repo of [...new Set(s.carplay.packages.map(p => p.repo))]) {
     for (const r of await gh(`${repo}/releases?per_page=100`)) {
       const m = /^(.+)@(\d+\.\d+\.\d+)$/.exec(r.tag_name || "");
-      if (m && !r.draft && !r.prerelease && (!latest[m[1]] || newer(m[2], latest[m[1]]))) latest[m[1]] = m[2];
+      if (m && !r.draft && !r.prerelease && (!latest[m[1]] || newer(m[2], latest[m[1]].v))) latest[m[1]] = { v: m[2], r };
     }
   }
   const rows = s.carplay.packages.map(p => {
-    const now = latest[p.id] || p.version;
+    const now = latest[p.id] ? latest[p.id].v : p.version;
     return { p, now, up: newer(now, p.version) };
   });
   const ups = rows.filter(r => r.up);
+  // What's new: his release texts are the same for every version; the changes are in his commits
+  // ("waze-on-cluster 0.7.8: ..."), between our version's tag and the new one.
+  let extra = "";
+  for (const u of ups) {
+    try {
+      const tag = v => encodeURIComponent(`${u.p.id}@${v}`);
+      const cmp = await gh(`${u.p.repo}/compare/${tag(u.p.version)}...${tag(u.now)}`);
+      const mine = cmp.commits.filter(c => c.commit.message.toLowerCase().includes(u.p.id)
+                                           && !c.commit.message.startsWith("Merge pull request"));
+      const lines = [...new Set((mine.length ? mine : cmp.commits).map(c => c.commit.message.split("\n")[0]))]
+        .reverse().slice(0, 25).map(m => `<li>${esc(m)}</li>`).join("");
+      extra += notes(true, `${esc(u.p.id)} ${esc(u.p.version)} → ${esc(u.now)}: what changed`, lines,
+                     latest[u.p.id].r.html_url);
+    } catch (e) { if (e instanceof RateLimited) throw e; }
+  }
   return paint("carplay", ups.length ? "available" : "current",
     ups.length ? `${ups.length} package(s) newer upstream - Launcher: CARPLAY CLUSTER → UPDATE….`
                : "The CarPlay map packages match what the Launcher ships.",
-    rows.map(r => item(r.p.id, r.p.version, r.now, r.up)));
+    rows.map(r => item(r.p.id, r.p.version, r.now, r.up)), extra);
 }
 
 async function checkNbt(s) {
-  const rels = await gh(`${s.nbtaad.source}/releases?per_page=30`);
-  const named = rels.filter(r => !r.draft && !r.prerelease && /v\d+\.\d+\.\d+/.test(`${r.name} ${r.tag_name}`))
-                    .sort((a, b) => (b.published_at || "").localeCompare(a.published_at || ""));
+  const rels = (await gh(`${s.nbtaad.source}/releases?per_page=30`)).filter(r => !r.draft)
+                 .sort((a, b) => (b.published_at || "").localeCompare(a.published_at || ""));
+  const ver = r => (/v\d+\.\d+\.\d+(?:-[A-Za-z0-9_.]+)?/.exec(`${r.name} ${r.tag_name}`) || [""])[0];
+  const named = rels.filter(r => !r.prerelease && ver(r));
   if (!named.length) return paint("nbt", "current", "No official release names a version.");
-  const r = named[0], v = /v\d+\.\d+\.\d+(?:-[A-Za-z0-9_.]+)?/.exec(`${r.name} ${r.tag_name}`)[0];
+  const r = named[0], v = ver(r);
   const up = newer(v, s.nbtaad.version);
+  // What's new: every release published after ours (their NAMES are the notes, e.g. "HUD/KOMBI Nav").
+  const mine = rels.find(x => ver(x) === s.nbtaad.version);
+  const after = rels.filter(x => mine ? (x.published_at || "") > (mine.published_at || "") : newer(ver(x), s.nbtaad.version));
+  const lines = after.map(x => `<li><b>${esc((x.published_at || "").slice(0, 10))}</b> <a href="${esc(x.html_url)}">${esc(x.name || x.tag_name)}</a>` +
+    (x.prerelease ? " <i>(pre-release)</i>" : "") +
+    (x.body ? `<div class="body">${esc(x.body.slice(0, 600))}${x.body.length > 600 ? "…" : ""}</div>` : "") + "</li>").join("");
   return paint("nbt", up ? "available" : "current",
     up ? `New release <a href="${esc(r.html_url)}">${esc(r.name || r.tag_name)}</a> (${esc((r.published_at || "").slice(0, 10))}) - NBT EVO Launcher downloads it on ANDROID AUTO.`
        : `Newest official release: <a href="${esc(r.html_url)}">${esc(r.name || r.tag_name)}</a>.`,
-    [item("nbt-aad", s.nbtaad.version, v, up)]);
+    [item("nbt-aad", s.nbtaad.version, v, up)],
+    after.length ? notes(up, `What's new - ${after.length} release(s) since ${esc(s.nbtaad.version)}`, lines) : "");
 }
 
 async function run() {
