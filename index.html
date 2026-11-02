@@ -54,6 +54,9 @@
   li span:first-child { overflow-wrap: anywhere; }
   .v { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 13px; white-space: nowrap; }
   .new { color: var(--amber); font-weight: 600; }
+  .badge { font-size: 10px; font-weight: 800; letter-spacing: .6px; color: var(--amber); background: var(--amber-bg);
+           border-radius: 6px; padding: 1px 6px; margin-right: 6px; vertical-align: 1px; }
+  .gone { color: var(--muted); text-decoration: line-through; }
   .commits li { display: block; color: var(--muted); font-size: 13px; }
   .commits b { color: var(--text); font-weight: 600; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 12px; }
   details { margin-top: 6px; }
@@ -133,7 +136,17 @@ async function checkApps(s) {
     const r = await fetch(`https://raw.githubusercontent.com/${repo}/main/apps/${id}/app.json`, { cache: "no-store" });
     if (r.ok) { try { remote[id] = String((await r.json()).version || ""); } catch (e) { /* not an app */ } }
   }));
-  const deltas = Object.keys(remote).sort().filter(id => remote[id] && remote[id] !== s.apps.versions[id]);
+  const ours = s.apps.versions;
+  const deltas = Object.keys(remote).sort().filter(id => remote[id] && remote[id] !== ours[id]);
+  // Every app of the vendor with its version: NEW in front of one we don't ship, "ours → theirs"
+  // when it changed; one we ship that the vendor removed is struck through.
+  const rows = Object.keys(remote).sort().map(id => {
+    const isNew = !(id in ours), changed = !isNew && remote[id] !== ours[id];
+    const name = (isNew ? '<span class="badge">NEW</span>' : "") + esc(id);
+    const ver = changed ? `${esc(ours[id])} → ${esc(remote[id])}` : esc(remote[id]);
+    return `<li><span>${name}</span><span class="v ${isNew || changed ? "new" : ""}">${ver}</span></li>`;
+  }).concat(Object.keys(ours).filter(id => !(id in remote)).sort().map(id =>
+    `<li><span class="gone">${esc(id)}</span><span class="v">removed by the vendor</span></li>`));
   let extra = "";
   try {
     const cmp = await gh(`${repo}/compare/${sha}...main`);
@@ -144,11 +157,12 @@ async function checkApps(s) {
     }
   } catch (e) { if (e instanceof RateLimited) throw e; }
   if (!deltas.length) {
-    return paint("apps", "current", `All ${Object.keys(remote).length} apps match what the Launcher ships.`, [], extra);
+    return paint("apps", "current", `All ${Object.keys(remote).length} vendor apps match what the Launcher ships.`, rows, extra);
   }
+  const fresh = deltas.filter(id => !(id in ours)).length;
   return paint("apps", "available",
-    `${deltas.length} app(s) changed upstream - Launcher: CUSTOM APPS → UPDATE…, then BUILD and UPDATE ON CAR.`,
-    deltas.map(id => item(id, s.apps.versions[id], remote[id], true)), extra);
+    `${deltas.length} app(s) changed upstream${fresh ? ` (${fresh} NEW)` : ""} - Launcher: CUSTOM APPS → UPDATE…, ` +
+    "then BUILD and UPDATE ON CAR.", rows, extra);
 }
 
 async function checkCarplay(s) {
