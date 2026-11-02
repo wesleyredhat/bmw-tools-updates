@@ -1,0 +1,49 @@
+{
+  "updated": "2026-11-02T20:26:15Z",
+  "launcher": "0.2.1",
+  "nbtevo": "0.0.1",
+  "apps": {
+    "source": "cauliflowermossgrape/idrive7-apps",
+    "head_sha": "25c7167",
+    "head_when": "2026-11-02",
+    "versions": {
+      "brake_test": "1.5.16",
+      "car_vitals": "2.21.4",
+      "doom": "1.7.16",
+      "draggy": "2.5.16",
+      "dtc_scanner": "2.9.4",
+      "dyno": "1.4.16",
+      "edrive": "2.7.3",
+      "gforce": "1.6.17",
+      "live_adjustments": "0.7.7",
+      "live_data": "1.0.1",
+      "redline": "1.10.16",
+      "service": "1.4.16",
+      "warmup": "1.6.16",
+      "zf8hp": "1.5.2"
+    }
+  },
+  "carplay": {
+    "packages": [
+      {
+        "id": "mgu-deploy",
+        "version": "0.7.11",
+        "repo": "robertnisipeanu/mgu-store"
+      },
+      {
+        "id": "cluster-render",
+        "version": "0.3.3",
+        "repo": "robertnisipeanu/idrive-apps"
+      },
+      {
+        "id": "waze-on-cluster",
+        "version": "0.7.8",
+        "repo": "robertnisipeanu/idrive-apps"
+      }
+    ]
+  },
+  "nbtaad": {
+    "source": "Sq00ky/Supra-iDrive6-Android-Auto",
+    "version": "v1.8.66"
+  }
+}
