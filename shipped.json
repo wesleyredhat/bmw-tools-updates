@@ -1,15 +1,15 @@
 {
-  "updated": "2026-11-03T12:53:49Z",
+  "updated": "2026-11-03T13:21:27Z",
   "launcher": "0.2.1",
   "nbtevo": "0.0.1",
   "apps": {
     "source": "cauliflowermossgrape/idrive7-apps",
-    "head_sha": "2f17237",
+    "head_sha": "5389acc",
     "head_when": "2026-11-03",
     "versions": {
       "aa_cluster_companion": "0.3.3",
       "brake_test": "1.5.16",
-      "car_vitals": "2.24.0",
+      "car_vitals": "2.24.1",
       "doom": "1.7.16",
       "draggy": "2.5.16",
       "dtc_scanner": "2.9.4",
