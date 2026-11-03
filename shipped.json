@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-03T13:21:27Z",
+  "updated": "2026-11-03T13:44:27Z",
   "launcher": "0.2.1",
   "nbtevo": "0.0.1",
   "apps": {
@@ -38,7 +38,12 @@
       },
       {
         "id": "waze-on-cluster",
-        "version": "0.7.9",
+        "version": "0.7.11",
+        "repo": "robertnisipeanu/idrive-apps"
+      },
+      {
+        "id": "robertn_waze_cluster",
+        "version": "0.4.3",
         "repo": "robertnisipeanu/idrive-apps"
       }
     ]
