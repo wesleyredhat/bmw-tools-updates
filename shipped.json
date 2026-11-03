@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-03T11:54:42Z",
+  "updated": "2026-11-03T12:53:49Z",
   "launcher": "0.2.1",
   "nbtevo": "0.0.1",
   "apps": {
@@ -33,7 +33,7 @@
       },
       {
         "id": "cluster-render",
-        "version": "0.3.5",
+        "version": "0.3.6",
         "repo": "robertnisipeanu/idrive-apps"
       },
       {
@@ -46,5 +46,35 @@
   "nbtaad": {
     "source": "Sq00ky/Supra-iDrive6-Android-Auto",
     "version": "v1.8.66"
+  },
+  "robert": {
+    "owner": "robertnisipeanu",
+    "synced": "2026-11-03 09:49",
+    "repos": {
+      "robertnisipeanu/mgu-store": "d2ea71ba0aa3085537f1ee9375635d95ff1c9672",
+      "robertnisipeanu/idrive-apps": "ab91e906f78aed64c3026b251ea0f83375b8bfb3"
+    },
+    "packages": {
+      "app-privacy": "1.7.1",
+      "cluster-render": "0.3.6",
+      "mgu-deploy": "0.7.14",
+      "mgu-python": "1.0.2",
+      "mgu-render": "0.6.9",
+      "mgu-updater": "0.8.19",
+      "mgu-uplink": "0.7.3",
+      "robertn_store": "0.9.16",
+      "robertn_waze_cluster": "0.4.1",
+      "waze-on-cluster": "0.7.9"
+    },
+    "known_repos": [
+      "ContainerProtect",
+      "altv-java-module",
+      "chat-ldap-notifier",
+      "draft-js-html",
+      "idrive-apps",
+      "mgu-store",
+      "ragemp-server-events",
+      "winkeymacros"
+    ]
   }
 }
