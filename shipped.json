@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-03T15:09:47Z",
+  "updated": "2026-11-03T15:20:40Z",
   "launcher": "0.2.2",
   "nbtevo": "0.0.1",
   "apps": {
@@ -59,10 +59,10 @@
   },
   "robert": {
     "owner": "robertnisipeanu",
-    "synced": "2026-11-03 09:49",
+    "synced": "2026-11-03 12:18",
     "repos": {
       "robertnisipeanu/mgu-store": "d2ea71ba0aa3085537f1ee9375635d95ff1c9672",
-      "robertnisipeanu/idrive-apps": "ab91e906f78aed64c3026b251ea0f83375b8bfb3"
+      "robertnisipeanu/idrive-apps": "605900ff72690249f275defc915ae0296dcb7894"
     },
     "packages": {
       "app-privacy": "1.7.1",
@@ -73,8 +73,8 @@
       "mgu-updater": "0.8.19",
       "mgu-uplink": "0.7.3",
       "robertn_store": "0.9.16",
-      "robertn_waze_cluster": "0.4.1",
-      "waze-on-cluster": "0.7.9"
+      "robertn_waze_cluster": "0.4.3",
+      "waze-on-cluster": "0.7.11"
     },
     "known_repos": [
       "ContainerProtect",
