@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-03T13:44:27Z",
+  "updated": "2026-11-03T13:53:05Z",
   "launcher": "0.2.1",
   "nbtevo": "0.0.1",
   "apps": {
@@ -29,6 +29,11 @@
       {
         "id": "mgu-deploy",
         "version": "0.7.14",
+        "repo": "robertnisipeanu/mgu-store"
+      },
+      {
+        "id": "app-privacy",
+        "version": "1.7.1",
         "repo": "robertnisipeanu/mgu-store"
       },
       {
