@@ -92,8 +92,12 @@
     <div class="row"><h2>ANDROID AUTO · NBT-AAD</h2><span class="pill s-checking">CHECKING…</span></div>
     <p class="what"></p><ul></ul>
   </section>
+  <section class="card" id="robert">
+    <div class="row"><h2>ROBERT NISIPEANU · everything</h2><span class="pill s-checking">CHECKING…</span></div>
+    <p class="what"></p><ul></ul>
+  </section>
 
-  <footer id="foot">Checked live on GitHub each time this page opens (about 5 GitHub calls; GitHub allows 60 an hour per network).</footer>
+  <footer id="foot">Checked live on GitHub each time this page opens (about 8 GitHub calls; GitHub allows 60 an hour per network).</footer>
 </main>
 
 <script>
@@ -105,7 +109,12 @@ const newer = (a, b) => { const x = key(a), y = key(b); for (let i = 0; i < 3; i
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
 class RateLimited extends Error {}
-async function gh(path) {
+const ghSeen = new Map();          // one GitHub call per path per check (cards share releases)
+function gh(path) {
+  if (!ghSeen.has(path)) ghSeen.set(path, ghFetch(path).catch(e => { ghSeen.delete(path); throw e; }));
+  return ghSeen.get(path);
+}
+async function ghFetch(path) {
   const r = await fetch(API + path, { headers: { Accept: "application/vnd.github+json" }, cache: "no-store" });
   if (r.status === 403 || r.status === 429) {
     const reset = Number(r.headers.get("x-ratelimit-reset")) * 1000;
@@ -228,11 +237,60 @@ async function checkNbt(s) {
     after.length ? notes(up, `What's new - ${after.length} release(s) since ${esc(s.nbtaad.version)}`, lines) : "");
 }
 
+// Everything Robert publishes, not only the three packages the Launcher installs: every
+// component's newest release (NEW = one we don't have), new repositories, and his open pull
+// requests (work in progress - e.g. HUD support - before it is released).
+async function checkRobert(s) {
+  const r = s.robert, owner = r.owner;
+  const repos = Object.keys(r.repos);
+  const latest = {};                                     // component -> {v, rel}
+  for (const repo of repos) {
+    for (const rel of await gh(`${repo}/releases?per_page=100`)) {
+      const m = /^(.+)@(\d+\.\d+\.\d+)$/.exec(rel.tag_name || "");
+      if (m && !rel.draft && !rel.prerelease && (!latest[m[1]] || newer(m[2], latest[m[1]].v))) latest[m[1]] = { v: m[2], rel };
+    }
+  }
+  const ids = [...new Set([...Object.keys(r.packages), ...Object.keys(latest)])].sort();
+  let changes = 0;
+  const rows = ids.map(id => {
+    const ours = r.packages[id], now = latest[id] ? latest[id].v : ours;
+    const isNew = !ours, up = !isNew && newer(now, ours);
+    if (isNew || up) changes++;
+    const name = (isNew ? '<span class="badge">NEW</span>' : "") + esc(id);
+    const ver = up ? `${esc(ours)} → ${esc(now)}` : esc(now || "");
+    return `<li><span>${name}</span><span class="v ${isNew || up ? "new" : ""}">${ver}</span></li>`;
+  });
+  const mine = (await gh(`../users/${owner}/repos?per_page=100&sort=pushed`)).filter(x => !x.fork);
+  const fresh = mine.filter(x => !r.known_repos.includes(x.name));
+  changes += fresh.length;
+  fresh.forEach(x => rows.unshift(`<li><span><span class="badge">NEW</span>repo ${esc(x.name)}</span>` +
+    `<span class="v new">${esc((x.created_at || "").slice(0, 10))}</span></li>`));
+  let extra = "";
+  const prs = [];
+  for (const repo of repos) for (const p of await gh(`${repo}/pulls?state=open&per_page=50`)) prs.push({ repo, p });
+  const isHud = ({ p }) => /\bhud\b|head-up/i.test(p.title);
+  prs.sort((a, b) => (isHud(b) - isHud(a)) || (b.p.created_at || "").localeCompare(a.p.created_at || ""));  // HUD first
+  const hud = prs.filter(isHud);
+  if (prs.length) {
+    const lines = prs.slice(0, 25).map(({ repo, p }) =>
+      `<li><b>${esc((p.created_at || "").slice(0, 10))}</b> ${/\bhud\b|head-up/i.test(p.title) ? '<span class="badge">HUD</span>' : ""}` +
+      `<a href="${esc(p.html_url)}">#${p.number}</a> ${esc(p.title)} <i>· ${esc(repo.split("/")[1])} · ${esc(p.user.login)}</i></li>`).join("");
+    extra = notes(hud.length > 0, `In progress - ${prs.length} open pull request(s), not released yet` +
+                  (hud.length ? ` (${hud.length} about the HUD)` : ""), lines);
+  }
+  return paint("robert", changes ? "available" : "current",
+    changes ? `${changes} new thing(s) from Robert - packages, components or repositories we don't have yet.`
+            : `We have everything he released (${ids.length} components, his ${mine.length} repositories).` +
+              (hud.length ? " HUD support is still a pull request (not released)." : ""),
+    rows, extra);
+}
+
 async function run() {
   const btn = document.getElementById("refresh"), overall = document.getElementById("overall");
   btn.disabled = true;
   overall.className = "overall s-checking"; overall.textContent = "Checking GitHub…";
-  ["apps", "carplay", "nbt"].forEach(id => paint(id, "checking", ""));
+  ghSeen.clear();                                  // a Refresh asks GitHub again
+  ["apps", "carplay", "nbt", "robert"].forEach(id => paint(id, "checking", ""));
   let shipped;
   try {
     const r = await fetch("shipped.json", { cache: "no-store" });
@@ -243,7 +301,7 @@ async function run() {
   }
   document.getElementById("shipped").textContent =
     `MGU Launcher ${shipped.launcher} · NBT EVO Launcher ${shipped.nbtevo} · shipped list of ${shipped.updated.slice(0, 10)}`;
-  const results = await Promise.all([["apps", checkApps], ["carplay", checkCarplay], ["nbt", checkNbt]].map(async ([id, fn]) => {
+  const results = await Promise.all([["apps", checkApps], ["carplay", checkCarplay], ["nbt", checkNbt], ["robert", checkRobert]].map(async ([id, fn]) => {
     try { return await fn(shipped); }
     catch (e) {
       const off = e instanceof RateLimited || e instanceof TypeError;
@@ -253,9 +311,9 @@ async function run() {
   const n = results.filter(s => s === "available").length;
   const bad = results.filter(s => s === "offline" || s === "error").length;
   overall.className = "overall s-" + (n ? "available" : bad ? "offline" : "current");
-  overall.textContent = n ? `${n} of 3 have an update` : bad ? "Couldn't check everything - see below" : "Everything is up to date";
+  overall.textContent = n ? `${n} of 4 have an update` : bad ? "Couldn't check everything - see below" : "Everything is up to date";
   document.getElementById("foot").textContent =
-    `Checked ${new Date().toLocaleString()} · live on GitHub (about 5 calls per check; 60 an hour per network).`;
+    `Checked ${new Date().toLocaleString()} · live on GitHub (about 8 calls per check; 60 an hour per network).`;
   btn.disabled = false;
 }
 
