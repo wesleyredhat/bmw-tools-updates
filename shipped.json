@@ -1,16 +1,16 @@
 {
-  "updated": "2026-11-04T12:56:46Z",
-  "launcher": "0.2.3",
+  "updated": "2026-11-04T17:00:13Z",
+  "launcher": "0.2.4",
   "nbtevo": "0.0.1",
   "apps": {
     "source": "cauliflowermossgrape/idrive7-apps",
-    "head_sha": "c67ea17",
+    "head_sha": "06db61a",
     "head_when": "2026-11-04",
     "versions": {
       "aa_cluster_companion": "0.3.5",
       "brake_test": "1.5.18",
       "car_vitals": "2.25.0",
-      "doom": "1.7.18",
+      "doom": "1.7.19",
       "draggy": "2.5.18",
       "dtc_scanner": "2.9.6",
       "dyno": "1.5.2",
@@ -38,17 +38,17 @@
       },
       {
         "id": "cluster-render",
-        "version": "0.3.7",
+        "version": "0.3.8",
         "repo": "robertnisipeanu/idrive-apps"
       },
       {
         "id": "waze-on-cluster",
-        "version": "0.8.0",
+        "version": "0.8.1",
         "repo": "robertnisipeanu/idrive-apps"
       },
       {
         "id": "robertn_waze_cluster",
-        "version": "0.5.0",
+        "version": "0.5.1",
         "repo": "robertnisipeanu/idrive-apps"
       }
     ]
@@ -59,22 +59,22 @@
   },
   "robert": {
     "owner": "robertnisipeanu",
-    "synced": "2026-11-04 09:05",
+    "synced": "2026-11-04 13:41",
     "repos": {
-      "robertnisipeanu/mgu-store": "7ee187a2d1c9ca5302ac7117a07a47ade3446a18",
-      "robertnisipeanu/idrive-apps": "3a2cde0c54ef966585da9557db9b2bbe36d98ecc"
+      "robertnisipeanu/mgu-store": "25d09c58c70825186013978c2973625ff683e3eb",
+      "robertnisipeanu/idrive-apps": "96a306dbcda5effe1089e26e890c0382b891c061"
     },
     "packages": {
       "app-privacy": "1.7.1",
-      "cluster-render": "0.3.7",
+      "cluster-render": "0.3.8",
       "mgu-deploy": "0.7.15",
       "mgu-python": "1.0.2",
       "mgu-render": "0.6.11",
       "mgu-updater": "0.8.21",
       "mgu-uplink": "0.7.3",
       "robertn_store": "0.9.17",
-      "robertn_waze_cluster": "0.5.0",
-      "waze-on-cluster": "0.8.0"
+      "robertn_waze_cluster": "0.5.1",
+      "waze-on-cluster": "0.8.1"
     },
     "known_repos": [
       "ContainerProtect",
