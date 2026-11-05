@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-05T01:16:01Z",
+  "updated": "2026-11-05T01:24:55Z",
   "launcher": "0.2.4",
   "nbtevo": "0.0.2",
   "apps": {
@@ -28,7 +28,7 @@
     "packages": [
       {
         "id": "mgu-deploy",
-        "version": "0.7.15",
+        "version": "0.7.17",
         "repo": "robertnisipeanu/mgu-store"
       },
       {
@@ -38,17 +38,17 @@
       },
       {
         "id": "cluster-render",
-        "version": "0.3.8",
+        "version": "0.3.10",
         "repo": "robertnisipeanu/idrive-apps"
       },
       {
         "id": "waze-on-cluster",
-        "version": "0.8.1",
+        "version": "0.8.5",
         "repo": "robertnisipeanu/idrive-apps"
       },
       {
         "id": "robertn_waze_cluster",
-        "version": "0.5.1",
+        "version": "0.5.6",
         "repo": "robertnisipeanu/idrive-apps"
       }
     ]
