@@ -1,55 +1,55 @@
 {
   "schema": 2,
   "what": "wesleyredhat HUD builds of Robert Nisipeanu's CarPlay-cluster packages",
-  "published": "2026-11-05T01:29:50Z",
+  "published": "2026-11-05T12:06:32Z",
   "components": [
     {
       "id": "cluster-render",
-      "version": "0.3.10",
+      "version": "0.3.11",
       "variant": "hud",
       "requires": {
         "mgu-deploy": "0.4.0"
       },
       "title": "Cluster renderer",
-      "source": "HUD build: robertnisipeanu/idrive-apps PR #41 (eroobeeroo) + Show map on: Cluster + HUD, on Robert's 0.8.5 (main 7925214: app in every display language, HIGH F head units, boot recovery) - wesleyredhat/idrive-apps hud-085 @4f77ecf, CI run 41946924276 (release.js build). Replaced by Robert's next official release once it carries the HUD.",
+      "source": "HUD build: robertnisipeanu/idrive-apps PR #41 (eroobeeroo) + Show map on: Cluster + HUD, on Robert's 0.8.7 (main 6477bb9: perf fixes - only the map's needed frames, VPP copy on the GPU, capture after BMW's media units) - wesleyredhat/idrive-apps hud-087 @375a6d8, CI run 42005557282, Test run 42005569348 green. Replaced by Robert's next official release once it carries the HUD.",
       "artifact": {
-        "name": "cluster-render@0.3.10.tgz",
-        "size": 7345698,
-        "sha256": "2242bddfd648621b9a557c6c886eba104b1c8e825833f359b3b0077cc1cf8c27",
-        "url": "https://github.com/wesleyredhat/idrive-apps/releases/download/hud-0.8.5/cluster-render%400.3.10.tgz"
+        "name": "cluster-render@0.3.11.tgz",
+        "size": 7357460,
+        "sha256": "73a52cc5233fe03702d5237a5989467dda740494d373098b525d40172163cb20",
+        "url": "https://github.com/wesleyredhat/idrive-apps/releases/download/hud-0.8.7/cluster-render%400.3.11.tgz"
       }
     },
     {
       "id": "waze-on-cluster",
-      "version": "0.8.5",
+      "version": "0.8.7",
       "variant": "hud",
       "requires": {
         "mgu-deploy": "0.7.11",
-        "cluster-render": "0.3.10"
+        "cluster-render": "0.3.11"
       },
       "title": "Waze on cluster",
-      "source": "HUD build: robertnisipeanu/idrive-apps PR #41 (eroobeeroo) + Show map on: Cluster + HUD, on Robert's 0.8.5 (main 7925214: app in every display language, HIGH F head units, boot recovery) - wesleyredhat/idrive-apps hud-085 @4f77ecf, CI run 41946924276 (release.js build). Replaced by Robert's next official release once it carries the HUD.",
+      "source": "HUD build: robertnisipeanu/idrive-apps PR #41 (eroobeeroo) + Show map on: Cluster + HUD, on Robert's 0.8.7 (main 6477bb9: perf fixes - only the map's needed frames, VPP copy on the GPU, capture after BMW's media units) - wesleyredhat/idrive-apps hud-087 @375a6d8, CI run 42005557282, Test run 42005569348 green. Replaced by Robert's next official release once it carries the HUD.",
       "artifact": {
-        "name": "waze-on-cluster@0.8.5.tgz",
-        "size": 2108474,
-        "sha256": "d271656fe50440fb916a12d5c997e4d819bd2ad264190a8b9d8f0337a3da4c73",
-        "url": "https://github.com/wesleyredhat/idrive-apps/releases/download/hud-0.8.5/waze-on-cluster%400.8.5.tgz"
+        "name": "waze-on-cluster@0.8.7.tgz",
+        "size": 2172562,
+        "sha256": "c05d8e245ffdda9492a37fdd5be26016fe302a1624e785bf49c0105d28eb6cae",
+        "url": "https://github.com/wesleyredhat/idrive-apps/releases/download/hud-0.8.7/waze-on-cluster%400.8.7.tgz"
       }
     },
     {
       "id": "robertn_waze_cluster",
-      "version": "0.5.6",
+      "version": "0.5.7",
       "variant": "hud",
       "requires": {
-        "waze-on-cluster": "0.8.5"
+        "waze-on-cluster": "0.8.6"
       },
       "title": "Waze on cluster",
-      "source": "HUD build: robertnisipeanu/idrive-apps PR #41 (eroobeeroo) + Show map on: Cluster + HUD, on Robert's 0.8.5 (main 7925214: app in every display language, HIGH F head units, boot recovery) - wesleyredhat/idrive-apps hud-085 @4f77ecf, CI run 41946924276 (release.js build). Replaced by Robert's next official release once it carries the HUD.",
+      "source": "HUD build: robertnisipeanu/idrive-apps PR #41 (eroobeeroo) + Show map on: Cluster + HUD, on Robert's 0.8.7 (main 6477bb9: perf fixes - only the map's needed frames, VPP copy on the GPU, capture after BMW's media units) - wesleyredhat/idrive-apps hud-087 @375a6d8, CI run 42005557282, Test run 42005569348 green. Replaced by Robert's next official release once it carries the HUD.",
       "artifact": {
-        "name": "robertn_waze_cluster@0.5.6.tgz",
-        "size": 79223,
-        "sha256": "a579f59279b79337f895701df0584b695437a4e531a99b862d62f64812d809e9",
-        "url": "https://github.com/wesleyredhat/idrive-apps/releases/download/hud-0.8.5/robertn_waze_cluster%400.5.6.tgz"
+        "name": "robertn_waze_cluster@0.5.7.tgz",
+        "size": 79269,
+        "sha256": "573fe4a777b109b03ba798dfe387819a0867effcfe5575b27ebf5dc32f277354",
+        "url": "https://github.com/wesleyredhat/idrive-apps/releases/download/hud-0.8.7/robertn_waze_cluster%400.5.7.tgz"
       }
     }
   ]
