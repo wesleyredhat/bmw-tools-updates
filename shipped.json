@@ -1,11 +1,11 @@
 {
-  "updated": "2026-11-06T19:40:51Z",
-  "launcher": "0.2.5",
+  "updated": "2026-11-06T19:51:40Z",
+  "launcher": "0.2.6",
   "nbtevo": "0.0.3",
   "apps": {
     "source": "cauliflowermossgrape/idrive7-apps",
-    "head_sha": "97ee84d",
-    "head_when": "2026-11-05",
+    "head_sha": "cca7f9a",
+    "head_when": "2026-11-06",
     "versions": {
       "brake_test": "1.5.19",
       "car_vitals": "2.26.0",
@@ -13,11 +13,11 @@
       "draggy": "2.5.19",
       "dtc_scanner": "2.9.6",
       "dyno": "1.5.2",
-      "edrive": "2.7.8",
+      "edrive": "2.7.9",
       "gforce": "1.6.20",
       "live_adjustments": "0.7.10",
-      "live_data": "1.0.7",
-      "redline": "1.12.1",
+      "live_data": "1.0.8",
+      "redline": "1.12.2",
       "service": "1.5.0",
       "warmup": "1.7.3",
       "zf8hp": "1.5.5"
@@ -27,7 +27,7 @@
     "packages": [
       {
         "id": "mgu-deploy",
-        "version": "0.8.0",
+        "version": "0.8.4",
         "repo": "robertnisipeanu/mgu-store"
       },
       {
@@ -37,17 +37,17 @@
       },
       {
         "id": "cluster-render",
-        "version": "0.4.0",
+        "version": "0.4.1",
         "repo": "robertnisipeanu/idrive-apps"
       },
       {
         "id": "waze-on-cluster",
-        "version": "0.9.0",
+        "version": "0.9.1",
         "repo": "robertnisipeanu/idrive-apps"
       },
       {
         "id": "robertn_waze_cluster",
-        "version": "0.6.0",
+        "version": "0.6.1",
         "repo": "robertnisipeanu/idrive-apps"
       }
     ]
@@ -58,22 +58,22 @@
   },
   "robert": {
     "owner": "robertnisipeanu",
-    "synced": "2026-11-05 16:57",
+    "synced": "2026-11-06 16:48",
     "repos": {
-      "robertnisipeanu/mgu-store": "afb0a14d71107ba2bbc30f7b3123d991d7c9a219",
-      "robertnisipeanu/idrive-apps": "daaa3f704132304bdd6c4552a33d7c550244672e"
+      "robertnisipeanu/mgu-store": "675fe6140795e38d8f6c34fd0cbef163ba9e9a5d",
+      "robertnisipeanu/idrive-apps": "88e8554b1d81593d85f8095b4f0c38213223990d"
     },
     "packages": {
       "app-privacy": "1.7.1",
-      "cluster-render": "0.4.0",
-      "mgu-deploy": "0.8.0",
+      "cluster-render": "0.4.1",
+      "mgu-deploy": "0.8.4",
       "mgu-python": "1.0.2",
-      "mgu-render": "0.6.11",
-      "mgu-updater": "0.8.27",
-      "mgu-uplink": "0.7.5",
-      "robertn_store": "0.9.24",
-      "robertn_waze_cluster": "0.6.0",
-      "waze-on-cluster": "0.9.0"
+      "mgu-render": "0.6.12",
+      "mgu-updater": "0.8.31",
+      "mgu-uplink": "0.7.6",
+      "robertn_store": "0.9.28",
+      "robertn_waze_cluster": "0.6.1",
+      "waze-on-cluster": "0.9.1"
     },
     "known_repos": [
       "ContainerProtect",
