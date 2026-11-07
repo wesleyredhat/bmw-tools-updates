@@ -1,6 +1,6 @@
 {
-  "updated": "2026-11-07T14:42:33Z",
-  "launcher": "0.3.0",
+  "updated": "2026-11-07T17:54:36Z",
+  "launcher": "0.3.1",
   "nbtevo": "0.0.3",
   "apps": {
     "source": "cauliflowermossgrape/idrive7-apps",
@@ -58,20 +58,20 @@
   },
   "robert": {
     "owner": "robertnisipeanu",
-    "synced": "2026-11-07 11:39",
+    "synced": "2026-11-07 14:51",
     "repos": {
-      "robertnisipeanu/mgu-store": "8cfae23db27e51d86f84e65b13ce0592668d8df9",
+      "robertnisipeanu/mgu-store": "5f2ac20566716711b97882ad1f37d11ef0e7deae",
       "robertnisipeanu/idrive-apps": "05e38eca8ca6f3bcde7e43d67127da664401caa8"
     },
     "packages": {
       "app-privacy": "1.7.1",
       "cluster-render": "0.4.2",
       "mgu-deploy": "0.8.4",
-      "mgu-python": "1.0.2",
-      "mgu-render": "0.6.12",
-      "mgu-updater": "0.8.31",
-      "mgu-uplink": "0.7.6",
-      "robertn_store": "0.9.29",
+      "mgu-python": "1.0.3",
+      "mgu-render": "0.6.13",
+      "mgu-updater": "0.8.32",
+      "mgu-uplink": "0.7.7",
+      "robertn_store": "0.9.30",
       "robertn_waze_cluster": "0.6.4",
       "waze-on-cluster": "0.9.3"
     },
