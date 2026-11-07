@@ -1,7 +1,7 @@
 {
-  "updated": "2026-11-07T20:43:15Z",
-  "launcher": "0.3.1",
-  "nbtevo": "0.0.3",
+  "updated": "2026-11-07T21:06:18Z",
+  "launcher": "0.3.2",
+  "nbtevo": "0.0.4",
   "apps": {
     "source": "cauliflowermossgrape/idrive7-apps",
     "head_sha": "180537a",
@@ -27,7 +27,7 @@
     "packages": [
       {
         "id": "mgu-deploy",
-        "version": "0.8.4",
+        "version": "0.8.5",
         "repo": "robertnisipeanu/mgu-store"
       },
       {
@@ -58,20 +58,20 @@
   },
   "robert": {
     "owner": "robertnisipeanu",
-    "synced": "2026-11-07 16:33",
+    "synced": "2026-11-07 18:03",
     "repos": {
-      "robertnisipeanu/mgu-store": "c5727f31fc184f31d621589a01bb81394c675eb5",
+      "robertnisipeanu/mgu-store": "4509d5a6f21b9a8509199554b9322f62e7413e1a",
       "robertnisipeanu/idrive-apps": "05e38eca8ca6f3bcde7e43d67127da664401caa8"
     },
     "packages": {
       "app-privacy": "1.7.1",
       "cluster-render": "0.4.2",
-      "mgu-deploy": "0.8.4",
+      "mgu-deploy": "0.8.5",
       "mgu-python": "1.0.3",
       "mgu-render": "0.6.14",
-      "mgu-updater": "0.8.33",
+      "mgu-updater": "0.8.34",
       "mgu-uplink": "0.7.7",
-      "robertn_store": "0.9.30",
+      "robertn_store": "0.9.31",
       "robertn_waze_cluster": "0.6.4",
       "waze-on-cluster": "0.9.3"
     },
