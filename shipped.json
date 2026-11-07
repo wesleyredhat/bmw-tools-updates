@@ -1,11 +1,11 @@
 {
-  "updated": "2026-11-06T22:01:02Z",
-  "launcher": "0.2.6",
+  "updated": "2026-11-07T10:26:36Z",
+  "launcher": "0.3.0",
   "nbtevo": "0.0.3",
   "apps": {
     "source": "cauliflowermossgrape/idrive7-apps",
-    "head_sha": "bd5ce85",
-    "head_when": "2026-11-06",
+    "head_sha": "7e7839b",
+    "head_when": "2026-11-07",
     "versions": {
       "brake_test": "1.5.19",
       "car_vitals": "2.26.0",
@@ -42,26 +42,26 @@
       },
       {
         "id": "waze-on-cluster",
-        "version": "0.9.1",
+        "version": "0.9.2",
         "repo": "robertnisipeanu/idrive-apps"
       },
       {
         "id": "robertn_waze_cluster",
-        "version": "0.6.1",
+        "version": "0.6.2",
         "repo": "robertnisipeanu/idrive-apps"
       }
     ]
   },
   "nbtaad": {
     "source": "Sq00ky/Supra-iDrive6-Android-Auto",
-    "version": "v1.9.33"
+    "version": "v1.9.35-wifisel"
   },
   "robert": {
     "owner": "robertnisipeanu",
-    "synced": "2026-11-06 16:48",
+    "synced": "2026-11-07 07:15",
     "repos": {
-      "robertnisipeanu/mgu-store": "675fe6140795e38d8f6c34fd0cbef163ba9e9a5d",
-      "robertnisipeanu/idrive-apps": "88e8554b1d81593d85f8095b4f0c38213223990d"
+      "robertnisipeanu/mgu-store": "8cfae23db27e51d86f84e65b13ce0592668d8df9",
+      "robertnisipeanu/idrive-apps": "febca7cfbee7e7907a73283373960bc69e678508"
     },
     "packages": {
       "app-privacy": "1.7.1",
@@ -71,9 +71,9 @@
       "mgu-render": "0.6.12",
       "mgu-updater": "0.8.31",
       "mgu-uplink": "0.7.6",
-      "robertn_store": "0.9.28",
-      "robertn_waze_cluster": "0.6.1",
-      "waze-on-cluster": "0.9.1"
+      "robertn_store": "0.9.29",
+      "robertn_waze_cluster": "0.6.2",
+      "waze-on-cluster": "0.9.2"
     },
     "known_repos": [
       "ContainerProtect",
