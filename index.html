@@ -57,6 +57,8 @@
   .badge { font-size: 10px; font-weight: 800; letter-spacing: .6px; color: var(--amber); background: var(--amber-bg);
            border-radius: 6px; padding: 1px 6px; margin-right: 6px; vertical-align: 1px; }
   .gone { color: var(--muted); text-decoration: line-through; }
+  .compat-ok { color: var(--green); font-weight: 600; }
+  .compat-no { color: var(--red); font-weight: 600; }
   .commits li { display: block; color: var(--muted); font-size: 13px; }
   .commits .body { white-space: pre-wrap; margin-top: 4px; color: var(--muted); }
   .commits a { font-weight: 600; }
@@ -87,6 +89,27 @@
   <section class="card" id="carplay">
     <div class="row"><h2>CARPLAY · cluster map</h2><span class="pill s-checking">CHECKING…</span></div>
     <p class="what"></p><ul></ul>
+  </section>
+  <!-- Static (no live check): which head-unit software runs the CarPlay map on the cluster (2026-11-07). -->
+  <section class="card" id="carplay-compat">
+    <div class="row"><h2>CARPLAY MAP · COMPATIBILIDADE</h2><span class="pill s-current">I-LEVEL</span></div>
+    <p class="what">O mapa no painel só funciona com o software da central (HU_MGU) na versão
+      <span class="v">P18_23w44.2</span>, que traz o CarPlay <span class="v">22.28.3</span>.</p>
+    <ul>
+      <li><span>Até 21-03</span><span class="v compat-no">não funciona</span></li>
+      <li><span>De 21-07 a 23-11</span><span class="v compat-no">precisa de flash</span></li>
+      <li><span>24-03 em diante</span><span class="v compat-ok">funciona</span></li>
+      <li><span>Recomendado</span><span class="v compat-ok">24-07 ou mais novo</span></li>
+    </ul>
+    <p class="what"><b>Exemplo:</b> I-level <span class="v">S18A-23-03-553</span> não funciona como está.
+      Precisa de flash da central (HU_MGU) para I-step 24-07 ou mais novo.</p>
+    <p class="what"><b>Importante:</b> o I-level do carro nem sempre é o mesmo da central, que pode ter sido
+      atualizada separadamente. A confirmação é feita quando conectamos no carro: lemos a versão do software
+      da central antes de qualquer instalação.</p>
+    <ul>
+      <li><span>Versão <span class="v">030.016</span></span><span class="v compat-ok">compatível</span></li>
+      <li><span>Versão abaixo de <span class="v">030</span></span><span class="v compat-no">precisa de flash</span></li>
+    </ul>
   </section>
   <section class="card" id="nbt">
     <div class="row"><h2>ANDROID AUTO · NBT-AAD</h2><span class="pill s-checking">CHECKING…</span></div>
