@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-08T11:42:34Z",
+  "updated": "2026-11-08T14:20:20Z",
   "launcher": "0.4.0",
   "nbtevo": "0.0.4",
   "apps": {
@@ -58,9 +58,9 @@
   },
   "robert": {
     "owner": "robertnisipeanu",
-    "synced": "2026-11-08 08:38",
+    "synced": "2026-11-08 11:18",
     "repos": {
-      "robertnisipeanu/mgu-store": "96665d356c86807129f4bf31e4743cd7f5959222",
+      "robertnisipeanu/mgu-store": "54c656a79f08db3385393417a93b5608778fa571",
       "robertnisipeanu/idrive-apps": "510878a92be9125bb46f29dbce4af8207c1c629e"
     },
     "packages": {
@@ -68,7 +68,7 @@
       "cluster-render": "0.4.2",
       "mgu-deploy": "0.8.6",
       "mgu-python": "1.0.3",
-      "mgu-render": "0.6.14",
+      "mgu-render": "0.6.15",
       "mgu-updater": "0.8.34",
       "mgu-uplink": "0.7.8",
       "robertn_store": "0.9.32",
