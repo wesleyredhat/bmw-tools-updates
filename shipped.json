@@ -1,11 +1,11 @@
 {
-  "updated": "2026-11-07T21:54:42Z",
+  "updated": "2026-11-08T11:42:34Z",
   "launcher": "0.4.0",
   "nbtevo": "0.0.4",
   "apps": {
     "source": "cauliflowermossgrape/idrive7-apps",
-    "head_sha": "180537a",
-    "head_when": "2026-11-07",
+    "head_sha": "21c6578",
+    "head_when": "2026-11-08",
     "versions": {
       "brake_test": "1.5.19",
       "car_vitals": "2.26.0",
@@ -13,11 +13,11 @@
       "draggy": "2.5.19",
       "dtc_scanner": "2.9.6",
       "dyno": "1.5.2",
-      "edrive": "2.8.1",
+      "edrive": "2.8.3",
       "gforce": "1.6.20",
       "live_adjustments": "0.8.1",
       "live_data": "1.0.8",
-      "redline": "1.13.0",
+      "redline": "1.15.0",
       "service": "1.5.0",
       "warmup": "1.7.3",
       "zf8hp": "1.5.5"
@@ -27,7 +27,7 @@
     "packages": [
       {
         "id": "mgu-deploy",
-        "version": "0.8.5",
+        "version": "0.8.6",
         "repo": "robertnisipeanu/mgu-store"
       },
       {
@@ -42,7 +42,7 @@
       },
       {
         "id": "waze-on-cluster",
-        "version": "0.9.3",
+        "version": "0.9.4",
         "repo": "robertnisipeanu/idrive-apps"
       },
       {
@@ -58,22 +58,22 @@
   },
   "robert": {
     "owner": "robertnisipeanu",
-    "synced": "2026-11-07 18:03",
+    "synced": "2026-11-08 08:38",
     "repos": {
-      "robertnisipeanu/mgu-store": "4509d5a6f21b9a8509199554b9322f62e7413e1a",
-      "robertnisipeanu/idrive-apps": "05e38eca8ca6f3bcde7e43d67127da664401caa8"
+      "robertnisipeanu/mgu-store": "96665d356c86807129f4bf31e4743cd7f5959222",
+      "robertnisipeanu/idrive-apps": "510878a92be9125bb46f29dbce4af8207c1c629e"
     },
     "packages": {
       "app-privacy": "1.7.1",
       "cluster-render": "0.4.2",
-      "mgu-deploy": "0.8.5",
+      "mgu-deploy": "0.8.6",
       "mgu-python": "1.0.3",
       "mgu-render": "0.6.14",
       "mgu-updater": "0.8.34",
-      "mgu-uplink": "0.7.7",
-      "robertn_store": "0.9.31",
+      "mgu-uplink": "0.7.8",
+      "robertn_store": "0.9.32",
       "robertn_waze_cluster": "0.6.4",
-      "waze-on-cluster": "0.9.3"
+      "waze-on-cluster": "0.9.4"
     },
     "known_repos": [
       "ContainerProtect",
