@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-08T14:26:45Z",
+  "updated": "2026-11-08T16:13:28Z",
   "launcher": "0.4.0",
   "nbtevo": "0.0.4",
   "apps": {
@@ -42,7 +42,7 @@
       },
       {
         "id": "waze-on-cluster",
-        "version": "0.9.4",
+        "version": "0.9.5",
         "repo": "robertnisipeanu/idrive-apps"
       },
       {
@@ -58,10 +58,10 @@
   },
   "robert": {
     "owner": "robertnisipeanu",
-    "synced": "2026-11-08 11:18",
+    "synced": "2026-11-08 12:55",
     "repos": {
       "robertnisipeanu/mgu-store": "54c656a79f08db3385393417a93b5608778fa571",
-      "robertnisipeanu/idrive-apps": "510878a92be9125bb46f29dbce4af8207c1c629e"
+      "robertnisipeanu/idrive-apps": "27b23e0b5894b385f35dcf3592fbd5400e1e8ba7"
     },
     "packages": {
       "app-privacy": "1.7.1",
@@ -73,7 +73,7 @@
       "mgu-uplink": "0.7.8",
       "robertn_store": "0.9.32",
       "robertn_waze_cluster": "0.6.4",
-      "waze-on-cluster": "0.9.4"
+      "waze-on-cluster": "0.9.5"
     },
     "known_repos": [
       "ContainerProtect",
