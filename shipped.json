@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-08T16:13:28Z",
+  "updated": "2026-11-08T19:07:24Z",
   "launcher": "0.4.0",
   "nbtevo": "0.0.4",
   "apps": {
@@ -27,7 +27,7 @@
     "packages": [
       {
         "id": "mgu-deploy",
-        "version": "0.8.6",
+        "version": "0.8.8",
         "repo": "robertnisipeanu/mgu-store"
       },
       {
@@ -58,18 +58,18 @@
   },
   "robert": {
     "owner": "robertnisipeanu",
-    "synced": "2026-11-08 12:55",
+    "synced": "2026-11-08 16:04",
     "repos": {
-      "robertnisipeanu/mgu-store": "54c656a79f08db3385393417a93b5608778fa571",
+      "robertnisipeanu/mgu-store": "cc877f1f3e7fb9b98a0d5bca54a1de2fb9570e85",
       "robertnisipeanu/idrive-apps": "27b23e0b5894b385f35dcf3592fbd5400e1e8ba7"
     },
     "packages": {
       "app-privacy": "1.7.1",
       "cluster-render": "0.4.2",
-      "mgu-deploy": "0.8.6",
+      "mgu-deploy": "0.8.8",
       "mgu-python": "1.0.3",
       "mgu-render": "0.6.15",
-      "mgu-updater": "0.8.34",
+      "mgu-updater": "0.8.35",
       "mgu-uplink": "0.7.8",
       "robertn_store": "0.9.32",
       "robertn_waze_cluster": "0.6.4",
