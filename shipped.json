@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-08T19:07:24Z",
+  "updated": "2026-11-08T23:40:59Z",
   "launcher": "0.4.0",
   "nbtevo": "0.0.4",
   "apps": {
@@ -54,7 +54,7 @@
   },
   "nbtaad": {
     "source": "Sq00ky/Supra-iDrive6-Android-Auto",
-    "version": "v1.9.35-wifisel"
+    "version": "v1.9.35-combined"
   },
   "robert": {
     "owner": "robertnisipeanu",
