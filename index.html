@@ -254,7 +254,7 @@ async function checkNbt(s) {
     (x.prerelease ? " <i>(pre-release)</i>" : "") +
     (x.body ? `<div class="body">${esc(x.body.slice(0, 600))}${x.body.length > 600 ? "…" : ""}</div>` : "") + "</li>").join("");
   return paint("nbt", up ? "available" : "current",
-    up ? `New release <a href="${esc(r.html_url)}">${esc(r.name || r.tag_name)}</a> (${esc((r.published_at || "").slice(0, 10))}) - NBT EVO Launcher downloads it on ANDROID AUTO.`
+    up ? `New release <a href="${esc(r.html_url)}">${esc(r.name || r.tag_name)}</a> (${esc((r.published_at || "").slice(0, 10))}) - NBT EntryNav EVO Launcher downloads it on ANDROID AUTO.`
        : `Newest official release: <a href="${esc(r.html_url)}">${esc(r.name || r.tag_name)}</a>.`,
     [item("nbt-aad", s.nbtaad.version, v, up)],
     after.length ? notes(up, `What's new - ${after.length} release(s) since ${esc(s.nbtaad.version)}`, lines) : "");
@@ -323,7 +323,7 @@ async function run() {
     btn.disabled = false; return;
   }
   document.getElementById("shipped").textContent =
-    `MGU Launcher ${shipped.launcher} · NBT EVO Launcher ${shipped.nbtevo} · shipped list of ${shipped.updated.slice(0, 10)}`;
+    `MGU Launcher ${shipped.launcher} · NBT EntryNav EVO Launcher ${shipped.nbtevo} · shipped list of ${shipped.updated.slice(0, 10)}`;
   const results = await Promise.all([["apps", checkApps], ["carplay", checkCarplay], ["nbt", checkNbt], ["robert", checkRobert]].map(async ([id, fn]) => {
     try { return await fn(shipped); }
     catch (e) {
