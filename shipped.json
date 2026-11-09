@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-08T23:49:50Z",
+  "updated": "2026-11-09T00:26:47Z",
   "launcher": "0.4.0",
   "nbtevo": "0.0.4",
   "apps": {
@@ -55,7 +55,7 @@
   },
   "nbtaad": {
     "source": "Sq00ky/Supra-iDrive6-Android-Auto",
-    "version": "v1.9.35-combined"
+    "version": "v1.9.38"
   },
   "robert": {
     "owner": "robertnisipeanu",
