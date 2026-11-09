@@ -1,10 +1,10 @@
 {
-  "updated": "2026-11-09T14:21:33Z",
+  "updated": "2026-11-09T15:48:25Z",
   "launcher": "0.4.0",
   "nbtevo": "0.1.0",
   "apps": {
     "source": "cauliflowermossgrape/idrive7-apps",
-    "head_sha": "13ff4bd",
+    "head_sha": "ea9abd9",
     "head_when": "2026-11-09",
     "versions": {
       "ambient_config": "1.3.0",
@@ -14,11 +14,11 @@
       "draggy": "2.5.19",
       "dtc_scanner": "2.9.6",
       "dyno": "1.5.2",
-      "edrive": "2.8.3",
+      "edrive": "2.8.4",
       "gforce": "1.6.20",
       "live_adjustments": "0.9.1",
       "live_data": "1.0.8",
-      "redline": "1.16.7",
+      "redline": "1.16.8",
       "service": "1.6.0",
       "warmup": "1.7.3",
       "zf8hp": "1.5.5"
