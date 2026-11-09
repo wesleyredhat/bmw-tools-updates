@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-09T19:27:07Z",
+  "updated": "2026-11-09T19:31:31Z",
   "launcher": "0.4.0",
   "nbtevo": "0.1.1",
   "apps": {
@@ -59,9 +59,9 @@
   },
   "robert": {
     "owner": "robertnisipeanu",
-    "synced": "2026-11-09 16:24",
+    "synced": "2026-11-09 16:30",
     "repos": {
-      "robertnisipeanu/mgu-store": "e7f3d7a12fe50fe2307fdacd4f9ae134d1f4032c",
+      "robertnisipeanu/mgu-store": "798dd49deb7e5a67a6e476eb711e9eab96726f49",
       "robertnisipeanu/idrive-apps": "d3283fe873a085d027543cf8da295332c0c369eb"
     },
     "packages": {
