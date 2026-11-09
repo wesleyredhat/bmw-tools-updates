@@ -1,7 +1,7 @@
 {
-  "updated": "2026-11-09T15:53:26Z",
+  "updated": "2026-11-09T15:58:45Z",
   "launcher": "0.4.0",
-  "nbtevo": "0.1.0",
+  "nbtevo": "0.1.1",
   "apps": {
     "source": "cauliflowermossgrape/idrive7-apps",
     "head_sha": "ea9abd9",
@@ -55,7 +55,7 @@
   },
   "nbtaad": {
     "source": "Sq00ky/Supra-iDrive6-Android-Auto",
-    "version": "v1.9.38"
+    "version": "v1.9.42"
   },
   "robert": {
     "owner": "robertnisipeanu",
