@@ -1,7 +1,7 @@
 {
-  "updated": "2026-11-09T11:06:37Z",
+  "updated": "2026-11-09T14:21:33Z",
   "launcher": "0.4.0",
-  "nbtevo": "0.0.4",
+  "nbtevo": "0.1.0",
   "apps": {
     "source": "cauliflowermossgrape/idrive7-apps",
     "head_sha": "13ff4bd",
