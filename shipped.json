@@ -1,10 +1,10 @@
 {
-  "updated": "2026-11-10T18:32:51Z",
+  "updated": "2026-11-10T22:39:19Z",
   "launcher": "0.4.0",
   "nbtevo": "0.1.1",
   "apps": {
     "source": "cauliflowermossgrape/idrive7-apps",
-    "head_sha": "fcde68d",
+    "head_sha": "1fb2bcc",
     "head_when": "2026-11-10",
     "versions": {
       "ambient_config": "2.0.4",
@@ -18,7 +18,7 @@
       "gforce": "1.6.21",
       "live_adjustments": "0.9.3",
       "live_data": "1.0.10",
-      "redline": "2.0.18",
+      "redline": "2.0.20",
       "service": "1.6.1",
       "warmup": "1.7.4",
       "zf8hp": "1.5.6"
@@ -28,7 +28,7 @@
     "packages": [
       {
         "id": "mgu-deploy",
-        "version": "0.8.9",
+        "version": "0.8.10",
         "repo": "robertnisipeanu/mgu-store"
       },
       {
@@ -38,43 +38,43 @@
       },
       {
         "id": "cluster-render",
-        "version": "0.5.2",
+        "version": "0.5.3",
         "repo": "robertnisipeanu/idrive-apps"
       },
       {
         "id": "waze-on-cluster",
-        "version": "0.9.9",
+        "version": "0.9.10",
         "repo": "robertnisipeanu/idrive-apps"
       },
       {
         "id": "robertn_waze_cluster",
-        "version": "0.6.6",
+        "version": "0.6.7",
         "repo": "robertnisipeanu/idrive-apps"
       }
     ]
   },
   "nbtaad": {
     "source": "Sq00ky/Supra-iDrive6-Android-Auto",
-    "version": "v1.9.50"
+    "version": "v1.9.57"
   },
   "robert": {
     "owner": "robertnisipeanu",
-    "synced": "2026-11-10 15:20",
+    "synced": "2026-11-10 19:37",
     "repos": {
-      "robertnisipeanu/mgu-store": "fd7d9ed7594cc7fcbdb2e0f6ae50d33c49c00b1e",
-      "robertnisipeanu/idrive-apps": "a0a4cbfb350db3eed8092d11a856279a1c2330a5"
+      "robertnisipeanu/mgu-store": "efbdcc0d68bd7faf5c5939fa6240050e5e3a449f",
+      "robertnisipeanu/idrive-apps": "c91cf979377d2de5970fdb8e775d45fe74a69d2c"
     },
     "packages": {
       "app-privacy": "1.7.1",
-      "cluster-render": "0.5.2",
-      "mgu-deploy": "0.8.9",
+      "cluster-render": "0.5.3",
+      "mgu-deploy": "0.8.10",
       "mgu-python": "1.0.3",
       "mgu-render": "0.6.19",
-      "mgu-updater": "0.8.37",
+      "mgu-updater": "0.8.38",
       "mgu-uplink": "0.7.9",
       "robertn_store": "0.9.35",
-      "robertn_waze_cluster": "0.6.6",
-      "waze-on-cluster": "0.9.9"
+      "robertn_waze_cluster": "0.6.7",
+      "waze-on-cluster": "0.9.10"
     },
     "known_repos": [
       "ContainerProtect",
