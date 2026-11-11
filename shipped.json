@@ -1,11 +1,11 @@
 {
-  "updated": "2026-11-11T11:20:31Z",
+  "updated": "2026-11-11T11:31:16Z",
   "launcher": "0.4.1",
   "nbtevo": "0.1.1",
   "apps": {
     "source": "cauliflowermossgrape/idrive7-apps",
-    "head_sha": "1fb2bcc",
-    "head_when": "2026-11-10",
+    "head_sha": "2c6cfdf",
+    "head_when": "2026-11-11",
     "versions": {
       "ambient_config": "2.0.4",
       "brake_test": "1.5.20",
