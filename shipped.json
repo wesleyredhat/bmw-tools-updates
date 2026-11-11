@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-11T18:39:24Z",
+  "updated": "2026-11-11T21:53:47Z",
   "launcher": "0.5.0",
   "nbtevo": "0.2.0",
   "apps": {
@@ -28,7 +28,7 @@
     "packages": [
       {
         "id": "mgu-deploy",
-        "version": "0.8.12",
+        "version": "0.8.14",
         "repo": "robertnisipeanu/mgu-store"
       },
       {
@@ -43,7 +43,7 @@
       },
       {
         "id": "waze-on-cluster",
-        "version": "0.9.11",
+        "version": "0.9.12",
         "repo": "robertnisipeanu/idrive-apps"
       },
       {
@@ -63,7 +63,7 @@
       },
       {
         "id": "mgu-updater",
-        "version": "0.8.40",
+        "version": "0.8.41",
         "repo": "robertnisipeanu/mgu-store"
       },
       {
@@ -73,7 +73,7 @@
       },
       {
         "id": "robertn_store",
-        "version": "0.9.36",
+        "version": "0.9.37",
         "repo": "robertnisipeanu/mgu-store"
       }
     ]
@@ -84,22 +84,22 @@
   },
   "robert": {
     "owner": "robertnisipeanu",
-    "synced": "2026-11-11 15:31",
+    "synced": "2026-11-11 18:43",
     "repos": {
-      "robertnisipeanu/mgu-store": "5cd5679aad856d415ff6ac1761ffaf9baac621be",
-      "robertnisipeanu/idrive-apps": "15f72469e72f73dd00017e2316a1b6234fc54654"
+      "robertnisipeanu/mgu-store": "e883efb4616d20f0403bb018f04de709b0df2604",
+      "robertnisipeanu/idrive-apps": "0de03f008b72ff94d49e0276f7275a0958c4d931"
     },
     "packages": {
       "app-privacy": "1.7.1",
       "cluster-render": "0.5.4",
-      "mgu-deploy": "0.8.12",
+      "mgu-deploy": "0.8.14",
       "mgu-python": "1.0.3",
       "mgu-render": "0.6.19",
-      "mgu-updater": "0.8.40",
+      "mgu-updater": "0.8.41",
       "mgu-uplink": "0.7.11",
-      "robertn_store": "0.9.36",
+      "robertn_store": "0.9.37",
       "robertn_waze_cluster": "0.6.7",
-      "waze-on-cluster": "0.9.11"
+      "waze-on-cluster": "0.9.12"
     },
     "known_repos": [
       "ContainerProtect",
