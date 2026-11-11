@@ -1,7 +1,7 @@
 {
-  "updated": "2026-11-11T11:31:16Z",
-  "launcher": "0.4.1",
-  "nbtevo": "0.1.1",
+  "updated": "2026-11-11T18:38:24Z",
+  "launcher": "0.5.0",
+  "nbtevo": "0.2.0",
   "apps": {
     "source": "cauliflowermossgrape/idrive7-apps",
     "head_sha": "2c6cfdf",
@@ -28,7 +28,7 @@
     "packages": [
       {
         "id": "mgu-deploy",
-        "version": "0.8.11",
+        "version": "0.8.12",
         "repo": "robertnisipeanu/mgu-store"
       },
       {
@@ -43,7 +43,7 @@
       },
       {
         "id": "waze-on-cluster",
-        "version": "0.9.10",
+        "version": "0.9.11",
         "repo": "robertnisipeanu/idrive-apps"
       },
       {
@@ -63,17 +63,17 @@
       },
       {
         "id": "mgu-updater",
-        "version": "0.8.39",
+        "version": "0.8.40",
         "repo": "robertnisipeanu/mgu-store"
       },
       {
         "id": "mgu-uplink",
-        "version": "0.7.9",
+        "version": "0.7.11",
         "repo": "robertnisipeanu/mgu-store"
       },
       {
         "id": "robertn_store",
-        "version": "0.9.35",
+        "version": "0.9.36",
         "repo": "robertnisipeanu/mgu-store"
       }
     ]
@@ -84,22 +84,22 @@
   },
   "robert": {
     "owner": "robertnisipeanu",
-    "synced": "2026-11-11 07:59",
+    "synced": "2026-11-11 15:31",
     "repos": {
-      "robertnisipeanu/mgu-store": "fc79a75f07f364c69165dec830f2fa4553ff20e4",
-      "robertnisipeanu/idrive-apps": "d0bae2d09ea3b1a8dde37771b836bcb8b2192466"
+      "robertnisipeanu/mgu-store": "5cd5679aad856d415ff6ac1761ffaf9baac621be",
+      "robertnisipeanu/idrive-apps": "15f72469e72f73dd00017e2316a1b6234fc54654"
     },
     "packages": {
       "app-privacy": "1.7.1",
       "cluster-render": "0.5.4",
-      "mgu-deploy": "0.8.11",
+      "mgu-deploy": "0.8.12",
       "mgu-python": "1.0.3",
       "mgu-render": "0.6.19",
-      "mgu-updater": "0.8.39",
-      "mgu-uplink": "0.7.9",
-      "robertn_store": "0.9.35",
+      "mgu-updater": "0.8.40",
+      "mgu-uplink": "0.7.11",
+      "robertn_store": "0.9.36",
       "robertn_waze_cluster": "0.6.7",
-      "waze-on-cluster": "0.9.10"
+      "waze-on-cluster": "0.9.11"
     },
     "known_repos": [
       "ContainerProtect",
