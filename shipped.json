@@ -1,6 +1,6 @@
 {
-  "updated": "2026-11-11T10:51:50Z",
-  "launcher": "0.4.0",
+  "updated": "2026-11-11T11:02:11Z",
+  "launcher": "0.4.1",
   "nbtevo": "0.1.1",
   "apps": {
     "source": "cauliflowermossgrape/idrive7-apps",
@@ -28,7 +28,7 @@
     "packages": [
       {
         "id": "mgu-deploy",
-        "version": "0.8.10",
+        "version": "0.8.11",
         "repo": "robertnisipeanu/mgu-store"
       },
       {
@@ -50,6 +50,31 @@
         "id": "robertn_waze_cluster",
         "version": "0.6.7",
         "repo": "robertnisipeanu/idrive-apps"
+      },
+      {
+        "id": "mgu-render",
+        "version": "0.6.19",
+        "repo": "robertnisipeanu/mgu-store"
+      },
+      {
+        "id": "mgu-python",
+        "version": "1.0.3",
+        "repo": "robertnisipeanu/mgu-store"
+      },
+      {
+        "id": "mgu-updater",
+        "version": "0.8.39",
+        "repo": "robertnisipeanu/mgu-store"
+      },
+      {
+        "id": "mgu-uplink",
+        "version": "0.7.9",
+        "repo": "robertnisipeanu/mgu-store"
+      },
+      {
+        "id": "robertn_store",
+        "version": "0.9.35",
+        "repo": "robertnisipeanu/mgu-store"
       }
     ]
   },
@@ -59,18 +84,18 @@
   },
   "robert": {
     "owner": "robertnisipeanu",
-    "synced": "2026-11-11 07:50",
+    "synced": "2026-11-11 07:59",
     "repos": {
-      "robertnisipeanu/mgu-store": "efbdcc0d68bd7faf5c5939fa6240050e5e3a449f",
+      "robertnisipeanu/mgu-store": "fc79a75f07f364c69165dec830f2fa4553ff20e4",
       "robertnisipeanu/idrive-apps": "d0bae2d09ea3b1a8dde37771b836bcb8b2192466"
     },
     "packages": {
       "app-privacy": "1.7.1",
       "cluster-render": "0.5.4",
-      "mgu-deploy": "0.8.10",
+      "mgu-deploy": "0.8.11",
       "mgu-python": "1.0.3",
       "mgu-render": "0.6.19",
-      "mgu-updater": "0.8.38",
+      "mgu-updater": "0.8.39",
       "mgu-uplink": "0.7.9",
       "robertn_store": "0.9.35",
       "robertn_waze_cluster": "0.6.7",
