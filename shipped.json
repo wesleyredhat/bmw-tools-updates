@@ -1,6 +1,6 @@
 {
-  "updated": "2026-11-12T17:07:13Z",
-  "launcher": "0.5.2",
+  "updated": "2026-11-12T20:17:57Z",
+  "launcher": "0.5.3",
   "nbtevo": "0.2.0",
   "apps": {
     "source": "cauliflowermossgrape/idrive7-apps",
@@ -84,14 +84,14 @@
   },
   "robert": {
     "owner": "robertnisipeanu",
-    "synced": "2026-11-12 08:24",
+    "synced": "2026-11-12 17:12",
     "repos": {
       "robertnisipeanu/mgu-store": "407f13e2091a028f7855568c51ba36f10dfab40d",
-      "robertnisipeanu/idrive-apps": "e8a9564703b83909f5cdcee45b2204a4ad50868f"
+      "robertnisipeanu/idrive-apps": "84e14d6898994bddcdd190d579a4b78dc3b69320"
     },
     "packages": {
       "app-privacy": "1.7.1",
-      "cluster-render": "0.5.6",
+      "cluster-render": "0.5.8",
       "mgu-deploy": "0.8.16",
       "mgu-python": "1.0.3",
       "mgu-render": "0.6.19",
