@@ -1,28 +1,28 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>BMW Tools Updates</title>
-<meta name="description" content="Is there an update for what MGU Launcher ships? Checked live on GitHub.">
+<title>MGU Novidades</title>
+<meta name="description" content="Varredura do GitHub: novidades dos vendors do MGU Launcher e vendors novos para o MGU (iDrive 7) e NBT EVO.">
 <meta name="theme-color" content="#16181c">
 <style>
   :root {
     --bg: #f4f5f7; --card: #ffffff; --text: #16181c; --muted: #5d6470; --line: #e2e5ea;
     --green: #1a7f37; --green-bg: #dafbe1; --amber: #9a6700; --amber-bg: #fff4d4;
-    --grey: #57606a; --grey-bg: #eaeef2; --red: #cf222e; --red-bg: #ffebe9; --accent: #0969da;
+    --grey: #57606a; --grey-bg: #eaeef2; --red: #cf222e; --red-bg: #ffebe9; --accent: #0969da; --accent-bg: #ddf4ff;
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
       --bg: #16181c; --card: #1f2228; --text: #e8eaed; --muted: #9aa1ab; --line: #30343b;
       --green: #56d364; --green-bg: #0f2f1a; --amber: #f0c674; --amber-bg: #3d2e04;
-      --grey: #b0b6be; --grey-bg: #30343b; --red: #ff7b72; --red-bg: #3d1416; --accent: #79c0ff;
+      --grey: #b0b6be; --grey-bg: #30343b; --red: #ff7b72; --red-bg: #3d1416; --accent: #79c0ff; --accent-bg: #0c2d4a;
     }
   }
   :root[data-theme="dark"] {
     --bg: #16181c; --card: #1f2228; --text: #e8eaed; --muted: #9aa1ab; --line: #30343b;
     --green: #56d364; --green-bg: #0f2f1a; --amber: #f0c674; --amber-bg: #3d2e04;
-    --grey: #b0b6be; --grey-bg: #30343b; --red: #ff7b72; --red-bg: #3d1416; --accent: #79c0ff;
+    --grey: #b0b6be; --grey-bg: #30343b; --red: #ff7b72; --red-bg: #3d1416; --accent: #79c0ff; --accent-bg: #0c2d4a;
   }
   * { box-sizing: border-box; }
   body {
@@ -30,42 +30,50 @@
     font: 15px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     padding: max(16px, env(safe-area-inset-top)) 16px max(24px, env(safe-area-inset-bottom));
   }
-  main { max-width: 640px; margin: 0 auto; }
+  main { max-width: 760px; margin: 0 auto; }
   header { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
   h1 { font-size: 20px; margin: 0 0 2px; letter-spacing: .2px; }
   .sub { color: var(--muted); font-size: 13px; }
-  button {
-    font: inherit; font-weight: 600; font-size: 14px; color: var(--text); background: var(--card);
-    border: 1px solid var(--line); border-radius: 10px; padding: 9px 14px; cursor: pointer; white-space: nowrap;
-  }
-  button:disabled { opacity: .55; }
-  .overall { border-radius: 14px; padding: 14px 16px; margin-bottom: 14px; font-weight: 700; font-size: 16px; }
+  .tabs { display: flex; gap: 6px; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 4px;
+          margin-bottom: 14px; position: sticky; top: 8px; z-index: 2; }
+  .tabs button { flex: 1; font: inherit; font-weight: 700; font-size: 14px; color: var(--muted); background: transparent;
+                 border: 0; border-radius: 9px; padding: 9px 8px; cursor: pointer; }
+  .tabs button.on { color: var(--text); background: var(--bg); }
+  .tabs .n { font-size: 12px; font-weight: 800; color: var(--amber); margin-left: 4px; }
+  .summary { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+  .chip { font-size: 12px; font-weight: 700; border-radius: 999px; padding: 5px 11px; border: 1px solid var(--line);
+          background: var(--card); color: var(--text); white-space: nowrap; }
+  button.chip { cursor: pointer; font-family: inherit; }
+  button.chip.on { background: var(--accent-bg); color: var(--accent); border-color: var(--accent); }
   .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; margin-bottom: 12px; }
-  .row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
-  .card h2 { font-size: 13px; letter-spacing: 1px; margin: 0; color: var(--muted); }
-  .pill { font-size: 12px; font-weight: 700; letter-spacing: .4px; border-radius: 999px; padding: 4px 10px; white-space: nowrap; }
-  .s-current { color: var(--green); background: var(--green-bg); }
-  .s-available { color: var(--amber); background: var(--amber-bg); }
-  .s-checking, .s-offline { color: var(--grey); background: var(--grey-bg); }
-  .s-error { color: var(--red); background: var(--red-bg); }
-  .what { margin: 8px 0 0; font-size: 14px; }
-  ul { margin: 8px 0 0; padding: 0; list-style: none; }
-  li { display: flex; justify-content: space-between; gap: 10px; padding: 7px 0; border-top: 1px solid var(--line); font-size: 14px; }
-  li span:first-child { overflow-wrap: anywhere; }
-  .v { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 13px; white-space: nowrap; }
-  .new { color: var(--amber); font-weight: 600; }
-  .badge { font-size: 10px; font-weight: 800; letter-spacing: .6px; color: var(--amber); background: var(--amber-bg);
-           border-radius: 6px; padding: 1px 6px; margin-right: 6px; vertical-align: 1px; }
-  .gone { color: var(--muted); text-decoration: line-through; }
-  .compat-ok { color: var(--green); font-weight: 600; }
-  .compat-no { color: var(--red); font-weight: 600; }
-  .commits li { display: block; color: var(--muted); font-size: 13px; }
-  .commits .body { white-space: pre-wrap; margin-top: 4px; color: var(--muted); }
-  .commits a { font-weight: 600; }
-  .rel { display: inline-block; margin-top: 6px; font-size: 13px; }
-  .commits b { color: var(--text); font-weight: 600; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 12px; }
+  .card h2 { font-size: 12px; letter-spacing: 1px; margin: 0 0 8px; color: var(--muted); text-transform: uppercase; }
+  .row { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+  .name { font-weight: 700; overflow-wrap: anywhere; }
+  .name a { color: var(--text); text-decoration: none; }
+  .name a:hover { text-decoration: underline; }
+  .meta { color: var(--muted); font-size: 13px; margin-top: 2px; }
+  .desc { font-size: 14px; margin-top: 6px; overflow-wrap: anywhere; }
+  .pill { font-size: 11px; font-weight: 800; letter-spacing: .4px; border-radius: 999px; padding: 3px 9px; white-space: nowrap; }
+  .p-green { color: var(--green); background: var(--green-bg); }
+  .p-amber { color: var(--amber); background: var(--amber-bg); }
+  .p-grey { color: var(--grey); background: var(--grey-bg); }
+  .p-red { color: var(--red); background: var(--red-bg); }
+  .p-blue { color: var(--accent); background: var(--accent-bg); }
+  .pills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  ul.commits { margin: 8px 0 0; padding: 0; list-style: none; }
+  ul.commits li { padding: 6px 0; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); overflow-wrap: anywhere; }
+  .v { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px; }
   details { margin-top: 6px; }
   summary { cursor: pointer; color: var(--accent); font-size: 13px; padding: 4px 0; }
+  .quote { margin-top: 8px; padding: 8px 10px; border-left: 3px solid var(--accent); background: var(--bg); border-radius: 6px;
+           font-size: 13px; white-space: pre-wrap; overflow-wrap: anywhere; max-height: 260px; overflow: auto; }
+  .gone .name { text-decoration: line-through; color: var(--red); }
+  .declined { opacity: .6; }
+  input[type=search] { width: 100%; font: inherit; font-size: 14px; color: var(--text); background: var(--card);
+                       border: 1px solid var(--line); border-radius: 10px; padding: 9px 12px; margin-bottom: 10px; }
+  .empty { color: var(--muted); font-size: 14px; padding: 6px 0; }
+  .quiet { color: var(--muted); font-size: 13px; overflow-wrap: anywhere; }
+  .hide { display: none; }
   a { color: var(--accent); }
   footer { color: var(--muted); font-size: 12px; margin-top: 18px; text-align: center; }
 </style>
@@ -74,274 +82,162 @@
 <main>
   <header>
     <div>
-      <h1>BMW Tools Updates</h1>
-      <div class="sub" id="shipped">Loading what MGU Launcher ships…</div>
+      <h1>MGU · Novidades</h1>
+      <div class="sub" id="when">Carregando a varredura…</div>
     </div>
-    <button id="refresh" type="button">Refresh</button>
   </header>
 
-  <div class="overall s-checking" id="overall">Checking GitHub…</div>
+  <nav class="tabs" role="tablist">
+    <button type="button" class="on" data-tab="ours" role="tab">No Launcher<span class="n" id="n-ours"></span></button>
+    <button type="button" data-tab="new" role="tab">Vendors novos<span class="n" id="n-new"></span></button>
+  </nav>
 
-  <section class="card" id="apps">
-    <div class="row"><h2>APPS · idrive7-apps</h2><span class="pill s-checking">CHECKING…</span></div>
-    <p class="what"></p><ul></ul>
-  </section>
-  <section class="card" id="carplay">
-    <div class="row"><h2>CARPLAY · cluster map</h2><span class="pill s-checking">CHECKING…</span></div>
-    <p class="what"></p><ul></ul>
-  </section>
-  <!-- Static (no live check): which head-unit software runs the CarPlay map on the cluster (2026-11-07). -->
-  <section class="card" id="carplay-compat">
-    <div class="row"><h2>CARPLAY MAP · COMPATIBILIDADE</h2><span class="pill s-current">I-LEVEL</span></div>
-    <p class="what">O mapa no painel só funciona com o software da central (HU_MGU) na versão
-      <span class="v">P18_23w44.2</span>, que traz o CarPlay <span class="v">22.28.3</span>.</p>
-    <ul>
-      <li><span>Até 21-03</span><span class="v compat-no">não funciona</span></li>
-      <li><span>De 21-07 a 23-11</span><span class="v compat-no">precisa de flash</span></li>
-      <li><span>24-03 em diante</span><span class="v compat-ok">funciona</span></li>
-      <li><span>Recomendado</span><span class="v compat-ok">24-07 ou mais novo</span></li>
-    </ul>
-    <p class="what"><b>Exemplo:</b> I-level <span class="v">S18A-23-03-553</span> não funciona como está.
-      Precisa de flash da central (HU_MGU) para I-step 24-07 ou mais novo.</p>
-    <p class="what"><b>Importante:</b> o I-level do carro nem sempre é o mesmo da central, que pode ter sido
-      atualizada separadamente. A confirmação é feita quando conectamos no carro: lemos a versão do software
-      da central antes de qualquer instalação.</p>
-    <ul>
-      <li><span>Versão <span class="v">030.016</span></span><span class="v compat-ok">compatível</span></li>
-      <li><span>Versão abaixo de <span class="v">030</span></span><span class="v compat-no">precisa de flash</span></li>
-    </ul>
-  </section>
-  <section class="card" id="nbt">
-    <div class="row"><h2>ANDROID AUTO · NBT-AAD</h2><span class="pill s-checking">CHECKING…</span></div>
-    <p class="what"></p><ul></ul>
-  </section>
-  <section class="card" id="robert">
-    <div class="row"><h2>ROBERT NISIPEANU · everything</h2><span class="pill s-checking">CHECKING…</span></div>
-    <p class="what"></p><ul></ul>
+  <section id="tab-ours"></section>
+  <section id="tab-new" class="hide">
+    <input type="search" id="q" placeholder="Buscar (nome, descrição, licença)…" aria-label="Buscar">
+    <div class="summary" id="filters"></div>
+    <div id="list-new"></div>
   </section>
 
-  <footer id="foot">Checked live on GitHub each time this page opens (about 8 GitHub calls; GitHub allows 60 an hour per network).</footer>
+  <footer>Gerada pela varredura do bmw-tools (tools/mgu_survey.py) · só leitura do GitHub</footer>
 </main>
-
 <script>
-"use strict";
-const API = "https://api.github.com/repos/";
-const LABEL = { current: "UP TO DATE", available: "UPDATE AVAILABLE", checking: "CHECKING…", offline: "OFFLINE", error: "ERROR" };
-const key = v => (String(v || "").match(/\d+/g) || []).slice(0, 3).map(Number);
-const newer = (a, b) => { const x = key(a), y = key(b); for (let i = 0; i < 3; i++) { if ((x[i] || 0) !== (y[i] || 0)) return (x[i] || 0) > (y[i] || 0); } return false; };
-const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"}[c]));
+const gh = r => "https://github.com/" + r;
+const day = s => (s || "").slice(0, 10).split("-").reverse().join("/");
+const LIC_OK = /^(MIT|GPL|LGPL|AGPL|MPL|Apache|BSD|Unlicense|ISC|0BSD|CC0)/i;
+const NBT = /nbt|entrynav|entry ?evo|\bid[56]\b|idrive ?[56]\b|qnx|6wa|dkombi/i;
+const kind = r => NBT.test(r.repo + " " + (r.desc || "")) ? "NBT EVO" : "MGU";
+const lic = l => !l || l === "none" || l === "NOASSERTION"
+  ? '<span class="pill p-amber">SEM LICENÇA</span>'
+  : `<span class="pill ${LIC_OK.test(l) ? "p-green" : "p-amber"}">${esc(l)}</span>`;
 
-class RateLimited extends Error {}
-const ghSeen = new Map();          // one GitHub call per path per check (cards share releases)
-function gh(path) {
-  if (!ghSeen.has(path)) ghSeen.set(path, ghFetch(path).catch(e => { ghSeen.delete(path); throw e; }));
-  return ghSeen.get(path);
+function commitsList(list, open) {
+  if (!list || !list.length) return "";
+  const lis = list.map(m => `<li>${esc(m)}</li>`);
+  if (lis.length <= open) return `<ul class="commits">${lis.join("")}</ul>`;
+  return `<ul class="commits">${lis.slice(0, open).join("")}</ul>` +
+    `<details><summary>mais ${lis.length - open}</summary><ul class="commits">${lis.slice(open).join("")}</ul></details>`;
 }
-async function ghFetch(path) {
-  const r = await fetch(API + path, { headers: { Accept: "application/vnd.github+json" }, cache: "no-store" });
-  if (r.status === 403 || r.status === 429) {
-    const reset = Number(r.headers.get("x-ratelimit-reset")) * 1000;
-    const mins = reset ? Math.max(1, Math.ceil((reset - Date.now()) / 60000)) : 60;
-    throw new RateLimited(`GitHub's hourly limit for this network was reached - try again in ~${mins} min.`);
+
+function renderOurs(d) {
+  const out = [];
+  const moved = (d.vendors || []).filter(v => !v.gone && ((v.commits || []).length || (v.releases || []).length || v.archived));
+  const gone = (d.vendors || []).filter(v => v.gone);
+  const quiet = (d.vendors || []).filter(v => !v.gone && !moved.includes(v));
+  const newReply = (d.issues || []).some(i => (i.new || []).some(c => c.by !== "wesleyredhat"));
+  const behind = (d.vendored || []).filter(x => x.ahead > 0 && !x.auto);
+  out.push(`<div class="summary">
+    <span class="chip">${moved.length} com novidade</span>
+    <span class="chip">${quiet.length} sem mudança</span>
+    ${gone.length ? `<span class="chip" style="color:var(--red)">${gone.length} sumiu do GitHub</span>` : ""}
+    ${behind.length ? `<span class="chip" style="color:var(--amber)">${behind.length} cópia(s) para atualizar</span>` : ""}
+    <span class="chip" style="color:${newReply ? "var(--green)" : "var(--muted)"}">${newReply ? "issue com resposta nova" : "issues sem resposta nova"}</span>
+  </div>`);
+
+  // the issues we follow
+  out.push(`<div class="card"><h2>Issues que acompanhamos</h2>` + (d.issues || []).map(i => {
+    const others = (i.new || []).filter(c => c.by !== "wesleyredhat");
+    const ours = (i.new || []).filter(c => c.by === "wesleyredhat");
+    const pill = others.length ? '<span class="pill p-green">RESPOSTA NOVA</span>' : '<span class="pill p-grey">SEM RESPOSTA</span>';
+    return `<div class="row"><div><div class="name"><a href="${esc(i.url)}" target="_blank" rel="noopener">${esc(i.repo)} #${i.number}</a></div>
+      <div class="meta">${esc(i.what)} · ${esc(i.state === "open" ? "aberta" : i.state)} · ${i.comments} comentário(s) · atualizada ${day(i.updated)}</div></div>${pill}</div>` +
+      others.map(c => `<div class="quote"><b>${esc(c.by)}</b> · ${day(c.at)}\n${esc(c.body)}</div>`).join("") +
+      (ours.length ? `<div class="meta" style="margin-top:6px">Nosso comentário de ${day(ours[ours.length - 1].at)} ainda é o último.</div>` : "");
+  }).join("") + `</div>`);
+
+  if (gone.length) {
+    out.push(`<div class="card"><h2>Sumiu do GitHub (o Launcher falha nela)</h2>` + gone.map(v =>
+      `<div class="gone"><div class="name">${esc(v.repo)}</div><div class="meta">${esc(v.note)} · o repositório responde 404</div></div>`).join("") + `</div>`);
   }
-  if (!r.ok) throw new Error(`GitHub answered HTTP ${r.status} for ${path}`);
-  return r.json();
-}
 
-function paint(id, state, what, items, extra) {
-  const card = document.getElementById(id);
-  const pill = card.querySelector(".pill");
-  pill.className = "pill s-" + state;
-  pill.textContent = LABEL[state];
-  card.querySelector(".what").innerHTML = what || "";
-  card.querySelector("ul").innerHTML = (items || []).join("");
-  card.querySelectorAll("details").forEach(d => d.remove());
-  if (extra) card.insertAdjacentHTML("beforeend", extra);
-  return state;
-}
-// A "what's new" block: open when there is an update, folded otherwise.
-const notes = (open, title, lines, link) =>
-  `<details${open ? " open" : ""}><summary>${title}</summary><ul class="commits">${lines}</ul>` +
-  (link ? `<a class="rel" href="${esc(link)}">release page →</a>` : "") + "</details>";
-const item = (name, have, now, isNew) =>
-  `<li><span>${esc(name)}</span><span class="v ${isNew ? "new" : ""}">${have ? esc(have) + " → " : "new · "}${esc(now)}</span></li>`;
-
-async function checkApps(s) {
-  const repo = s.apps.source, sha = s.apps.head_sha;
-  const list = await gh(`${repo}/contents/apps?ref=main`);
-  const ids = list.filter(e => e.type === "dir").map(e => e.name);
-  const remote = {};
-  await Promise.all(ids.map(async id => {
-    const r = await fetch(`https://raw.githubusercontent.com/${repo}/main/apps/${id}/app.json`, { cache: "no-store" });
-    if (r.ok) { try { remote[id] = String((await r.json()).version || ""); } catch (e) { /* not an app */ } }
-  }));
-  const ours = s.apps.versions;
-  const deltas = Object.keys(remote).sort().filter(id => remote[id] && remote[id] !== ours[id]);
-  // Every app of the vendor with its version: NEW in front of one we don't ship, "ours → theirs"
-  // when it changed; one we ship that the vendor removed is struck through.
-  const rows = Object.keys(remote).sort().map(id => {
-    const isNew = !(id in ours), changed = !isNew && remote[id] !== ours[id];
-    const name = (isNew ? '<span class="badge">NEW</span>' : "") + esc(id);
-    const ver = changed ? `${esc(ours[id])} → ${esc(remote[id])}` : esc(remote[id]);
-    return `<li><span>${name}</span><span class="v ${isNew || changed ? "new" : ""}">${ver}</span></li>`;
-  }).concat(Object.keys(ours).filter(id => !(id in remote)).sort().map(id =>
-    `<li><span class="gone">${esc(id)}</span><span class="v">removed by the vendor</span></li>`));
-  // What's new: the vendor publishes no releases - its commits are the notes ("G-Force 1.6.17: ...").
-  let extra = "";
-  try {
-    const cmp = await gh(`${repo}/compare/${sha}...main`);
-    if (cmp.ahead_by) {
-      const lines = cmp.commits.slice(-20).reverse().map(c =>
-        `<li><b>${esc(c.commit.author.date.slice(0, 10))}</b> ${esc(c.commit.message.split("\n")[0])}</li>`).join("");
-      extra = notes(deltas.length > 0, `What's new upstream - ${cmp.ahead_by} change(s) since ${esc(sha)}`, lines);
-    }
-  } catch (e) { if (e instanceof RateLimited) throw e; }
-  if (!deltas.length) {
-    return paint("apps", "current", `All ${Object.keys(remote).length} vendor apps match what the Launcher ships.`, rows, extra);
+  if ((d.vendored || []).length) {
+    out.push(`<div class="card"><h2>Cópias no projeto (vendor/)</h2>` + d.vendored.map(x => {
+      const pill = x.ahead == null ? '<span class="pill p-grey">?</span>'
+        : x.ahead === 0 ? '<span class="pill p-green">EM DIA</span>'
+        : x.auto ? `<span class="pill p-blue">${x.ahead} NOVOS · O LAUNCHER BAIXA</span>`
+        : `<span class="pill p-amber">${x.ahead} NOVOS · SYNC MANUAL</span>`;
+      return `<div style="margin-top:8px"><div class="row"><div><div class="name"><a href="${esc(gh(x.repo))}" target="_blank" rel="noopener">${esc(x.repo)}</a></div>
+        <div class="meta">vendor/${esc(x.dir)} · nossa cópia <span class="v">${esc((x.sha || "").slice(0, 7))}</span></div></div>${pill}</div>
+        ${x.auto ? "" : commitsList(x.commits, 3)}</div>`;
+    }).join("") + `</div>`);
   }
-  const fresh = deltas.filter(id => !(id in ours)).length;
-  return paint("apps", "available",
-    `${deltas.length} app(s) changed upstream${fresh ? ` (${fresh} NEW)` : ""} - Launcher: CUSTOM APPS → UPDATE…, ` +
-    "then BUILD and UPDATE ON CAR.", rows, extra);
+
+  out.push(`<div class="card"><h2>Vendors com novidade</h2>` + (moved.length ? moved.map(v => `
+    <div style="margin-top:10px"><div class="row"><div>
+      <div class="name"><a href="${esc(gh(v.repo))}" target="_blank" rel="noopener">${esc(v.repo)}</a></div>
+      <div class="meta">${esc(v.note)} · push ${day(v.pushed)}${v.archived ? " · ARQUIVADO" : ""}</div></div>
+      <span class="pill p-amber">${(v.commits || []).length} COMMIT(S)</span></div>
+      ${(v.releases || []).length ? `<div class="pills">${v.releases.map(r => `<span class="pill p-blue">${esc(r)}</span>`).join("")}</div>` : ""}
+      ${commitsList(v.commits, 3)}</div>`).join("") : '<div class="empty">Nenhum vendor mudou desde a última varredura.</div>') +
+    `<div class="meta" style="margin-top:10px">Apps e versões novas desses vendors aparecem sozinhas no Launcher (ele lê os vendors ao vivo).</div></div>`);
+
+  if (quiet.length) {
+    out.push(`<div class="card"><h2>Sem mudança</h2><div class="quiet">${quiet.map(v => esc(v.repo)).join(" · ")}</div></div>`);
+  }
+
+  const others = d.owners_new || [];
+  out.push(`<div class="card"><h2>Outros repositórios dos nossos vendors</h2>` + (others.length ? others.map(row).join("") :
+    '<div class="empty">Nenhum.</div>') + `<div class="meta" style="margin-top:8px">Esses o Launcher NÃO pega sozinho.</div></div>`);
+  document.getElementById("tab-ours").innerHTML = out.join("");
+  document.getElementById("n-ours").textContent = moved.length ? moved.length : "";
 }
 
-async function checkCarplay(s) {
-  const latest = {};                       // package -> its newest release
-  for (const repo of [...new Set(s.carplay.packages.map(p => p.repo))]) {
-    for (const r of await gh(`${repo}/releases?per_page=100`)) {
-      const m = /^(.+)@(\d+\.\d+\.\d+)$/.exec(r.tag_name || "");
-      if (m && !r.draft && !r.prerelease && (!latest[m[1]] || newer(m[2], latest[m[1]].v))) latest[m[1]] = { v: m[2], r };
-    }
-  }
-  const rows = s.carplay.packages.map(p => {
-    const now = latest[p.id] ? latest[p.id].v : p.version;
-    return { p, now, up: newer(now, p.version) };
-  });
-  const ups = rows.filter(r => r.up);
-  // What's new: his release texts are the same for every version; the changes are in his commits
-  // ("waze-on-cluster 0.7.8: ..."), between our version's tag and the new one.
-  let extra = "";
-  for (const u of ups) {
-    try {
-      const tag = v => encodeURIComponent(`${u.p.id}@${v}`);
-      const cmp = await gh(`${u.p.repo}/compare/${tag(u.p.version)}...${tag(u.now)}`);
-      const mine = cmp.commits.filter(c => c.commit.message.toLowerCase().includes(u.p.id)
-                                           && !c.commit.message.startsWith("Merge pull request"));
-      const lines = [...new Set((mine.length ? mine : cmp.commits).map(c => c.commit.message.split("\n")[0]))]
-        .reverse().slice(0, 25).map(m => `<li>${esc(m)}</li>`).join("");
-      extra += notes(true, `${esc(u.p.id)} ${esc(u.p.version)} → ${esc(u.now)}: what changed`, lines,
-                     latest[u.p.id].r.html_url);
-    } catch (e) { if (e instanceof RateLimited) throw e; }
-  }
-  return paint("carplay", ups.length ? "available" : "current",
-    ups.length ? `${ups.length} package(s) newer upstream - Launcher: CARPLAY CLUSTER → UPDATE….`
-               : "The CarPlay map packages match what the Launcher ships.",
-    rows.map(r => item(r.p.id, r.p.version, r.now, r.up)), extra);
+function row(r) {
+  const pills = [r.new ? '<span class="pill p-amber">NOVO</span>' : '<span class="pill p-grey">ATUALIZADO</span>',
+                 lic(r.licence), `<span class="pill p-grey">★ ${r.stars}</span>`, `<span class="pill p-blue">${kind(r)}</span>`];
+  if (r.declined) pills.push(`<span class="pill p-red">RECUSADO: ${esc(r.declined)}</span>`);
+  return `<div class="${r.declined ? "declined" : ""}" style="margin-top:10px;padding-top:10px;border-top:1px solid var(--line)">
+    <div class="name"><a href="${esc(gh(r.repo))}" target="_blank" rel="noopener">${esc(r.repo)}</a></div>
+    <div class="desc">${esc(r.desc || "(sem descrição)")}</div>
+    <div class="pills">${pills.join("")}</div>
+    <div class="meta" style="margin-top:6px">criado ${day(r.created)} · push ${day(r.pushed)}</div></div>`;
 }
 
-async function checkNbt(s) {
-  const rels = (await gh(`${s.nbtaad.source}/releases?per_page=30`)).filter(r => !r.draft)
-                 .sort((a, b) => (b.published_at || "").localeCompare(a.published_at || ""));
-  const ver = r => (/v\d+\.\d+\.\d+(?:-[A-Za-z0-9_.]+)?/.exec(`${r.name} ${r.tag_name}`) || [""])[0];
-  const named = rels.filter(r => !r.prerelease && ver(r));
-  if (!named.length) return paint("nbt", "current", "No official release names a version.");
-  const r = named[0], v = ver(r);
-  const up = newer(v, s.nbtaad.version);
-  // What's new: every release published after ours (their NAMES are the notes, e.g. "HUD/KOMBI Nav").
-  const mine = rels.find(x => ver(x) === s.nbtaad.version);
-  const after = rels.filter(x => mine ? (x.published_at || "") > (mine.published_at || "") : newer(ver(x), s.nbtaad.version));
-  const lines = after.map(x => `<li><b>${esc((x.published_at || "").slice(0, 10))}</b> <a href="${esc(x.html_url)}">${esc(x.name || x.tag_name)}</a>` +
-    (x.prerelease ? " <i>(pre-release)</i>" : "") +
-    (x.body ? `<div class="body">${esc(x.body.slice(0, 600))}${x.body.length > 600 ? "…" : ""}</div>` : "") + "</li>").join("");
-  return paint("nbt", up ? "available" : "current",
-    up ? `New release <a href="${esc(r.html_url)}">${esc(r.name || r.tag_name)}</a> (${esc((r.published_at || "").slice(0, 10))}) - NBT EntryNav EVO Launcher downloads it on ANDROID AUTO.`
-       : `Newest official release: <a href="${esc(r.html_url)}">${esc(r.name || r.tag_name)}</a>.`,
-    [item("nbt-aad", s.nbtaad.version, v, up)],
-    after.length ? notes(up, `What's new - ${after.length} release(s) since ${esc(s.nbtaad.version)}`, lines) : "");
+const F = {novo: false, mgu: false, nbt: false, lic: false};
+function renderNew(d) {
+  const all = (d.wide || []);
+  const q = document.getElementById("q").value.trim().toLowerCase();
+  const list = all.filter(r => (!F.novo || r.new) && (!F.mgu || kind(r) === "MGU") && (!F.nbt || kind(r) === "NBT EVO") &&
+    (!F.lic || LIC_OK.test(r.licence || "")) &&
+    (!q || (r.repo + " " + (r.desc || "") + " " + (r.licence || "")).toLowerCase().includes(q)));
+  const chip = (k, label, n) => `<button type="button" class="chip ${F[k] ? "on" : ""}" data-f="${k}">${label} (${n})</button>`;
+  document.getElementById("filters").innerHTML =
+    chip("novo", "Só novos", all.filter(r => r.new).length) + chip("mgu", "MGU", all.filter(r => kind(r) === "MGU").length) +
+    chip("nbt", "NBT EVO", all.filter(r => kind(r) === "NBT EVO").length) +
+    chip("lic", "Licença livre", all.filter(r => LIC_OK.test(r.licence || "")).length);
+  document.getElementById("list-new").innerHTML = `<div class="card"><h2>${list.length} de ${all.length} repositórios fora do Launcher</h2>` +
+    (list.length ? list.map(row).join("") : '<div class="empty">Nada com esses filtros.</div>') +
+    `<div class="meta" style="margin-top:10px">Antes de entrar no Launcher cada um tem o código lido (escritas no carro, patches, rede) e só entra com o seu OK.</div></div>`;
+  document.getElementById("n-new").textContent = all.filter(r => r.new && !r.declined).length || "";
 }
 
-// Everything Robert publishes, not only the three packages the Launcher installs: every
-// component's newest release (NEW = one we don't have), new repositories, and his open pull
-// requests (work in progress - e.g. HUD support - before it is released).
-async function checkRobert(s) {
-  const r = s.robert, owner = r.owner;
-  const repos = Object.keys(r.repos);
-  const latest = {};                                     // component -> {v, rel}
-  for (const repo of repos) {
-    for (const rel of await gh(`${repo}/releases?per_page=100`)) {
-      const m = /^(.+)@(\d+\.\d+\.\d+)$/.exec(rel.tag_name || "");
-      if (m && !rel.draft && !rel.prerelease && (!latest[m[1]] || newer(m[2], latest[m[1]].v))) latest[m[1]] = { v: m[2], rel };
-    }
-  }
-  const ids = [...new Set([...Object.keys(r.packages), ...Object.keys(latest)])].sort();
-  let changes = 0;
-  const rows = ids.map(id => {
-    const ours = r.packages[id], now = latest[id] ? latest[id].v : ours;
-    const isNew = !ours, up = !isNew && newer(now, ours);
-    if (isNew || up) changes++;
-    const name = (isNew ? '<span class="badge">NEW</span>' : "") + esc(id);
-    const ver = up ? `${esc(ours)} → ${esc(now)}` : esc(now || "");
-    return `<li><span>${name}</span><span class="v ${isNew || up ? "new" : ""}">${ver}</span></li>`;
-  });
-  const mine = (await gh(`../users/${owner}/repos?per_page=100&sort=pushed`)).filter(x => !x.fork);
-  const fresh = mine.filter(x => !r.known_repos.includes(x.name));
-  changes += fresh.length;
-  fresh.forEach(x => rows.unshift(`<li><span><span class="badge">NEW</span>repo ${esc(x.name)}</span>` +
-    `<span class="v new">${esc((x.created_at || "").slice(0, 10))}</span></li>`));
-  let extra = "";
-  const prs = [];
-  for (const repo of repos) for (const p of await gh(`${repo}/pulls?state=open&per_page=50`)) prs.push({ repo, p });
-  const isHud = ({ p }) => /\bhud\b|head-up/i.test(p.title);
-  prs.sort((a, b) => (isHud(b) - isHud(a)) || (b.p.created_at || "").localeCompare(a.p.created_at || ""));  // HUD first
-  const hud = prs.filter(isHud);
-  if (prs.length) {
-    const lines = prs.slice(0, 25).map(({ repo, p }) =>
-      `<li><b>${esc((p.created_at || "").slice(0, 10))}</b> ${/\bhud\b|head-up/i.test(p.title) ? '<span class="badge">HUD</span>' : ""}` +
-      `<a href="${esc(p.html_url)}">#${p.number}</a> ${esc(p.title)} <i>· ${esc(repo.split("/")[1])} · ${esc(p.user.login)}</i></li>`).join("");
-    extra = notes(hud.length > 0, `In progress - ${prs.length} open pull request(s), not released yet` +
-                  (hud.length ? ` (${hud.length} about the HUD)` : ""), lines);
-  }
-  return paint("robert", changes ? "available" : "current",
-    changes ? `${changes} new thing(s) from Robert - packages, components or repositories we don't have yet.`
-            : `We have everything he released (${ids.length} components, his ${mine.length} repositories).` +
-              (hud.length ? " HUD support is still a pull request (not released)." : ""),
-    rows, extra);
-}
+let DATA = null;
+document.querySelectorAll(".tabs button").forEach(b => b.addEventListener("click", () => {
+  document.querySelectorAll(".tabs button").forEach(x => x.classList.toggle("on", x === b));
+  document.getElementById("tab-ours").classList.toggle("hide", b.dataset.tab !== "ours");
+  document.getElementById("tab-new").classList.toggle("hide", b.dataset.tab !== "new");
+  try { localStorage.setItem("mgu-tab", b.dataset.tab); } catch (e) {}
+}));
+document.getElementById("filters").addEventListener("click", e => {
+  const k = e.target.closest("[data-f]");
+  if (!k) return;
+  F[k.dataset.f] = !F[k.dataset.f];
+  if (k.dataset.f === "mgu" && F.mgu) F.nbt = false;
+  if (k.dataset.f === "nbt" && F.nbt) F.mgu = false;
+  renderNew(DATA);
+});
+document.getElementById("q").addEventListener("input", () => renderNew(DATA));
 
-async function run() {
-  const btn = document.getElementById("refresh"), overall = document.getElementById("overall");
-  btn.disabled = true;
-  overall.className = "overall s-checking"; overall.textContent = "Checking GitHub…";
-  ghSeen.clear();                                  // a Refresh asks GitHub again
-  ["apps", "carplay", "nbt", "robert"].forEach(id => paint(id, "checking", ""));
-  let shipped;
-  try {
-    const r = await fetch("shipped.json", { cache: "no-store" });
-    shipped = await r.json();
-  } catch (e) {
-    overall.className = "overall s-offline"; overall.textContent = "Offline - couldn't load the page's data.";
-    btn.disabled = false; return;
-  }
-  document.getElementById("shipped").textContent =
-    `MGU Launcher ${shipped.launcher} · NBT EntryNav EVO Launcher ${shipped.nbtevo} · shipped list of ${shipped.updated.slice(0, 10)}`;
-  const results = await Promise.all([["apps", checkApps], ["carplay", checkCarplay], ["nbt", checkNbt], ["robert", checkRobert]].map(async ([id, fn]) => {
-    try { return await fn(shipped); }
-    catch (e) {
-      const off = e instanceof RateLimited || e instanceof TypeError;
-      return paint(id, off ? "offline" : "error", esc(off && e instanceof TypeError ? "No connection to GitHub." : e.message));
-    }
-  }));
-  const n = results.filter(s => s === "available").length;
-  const bad = results.filter(s => s === "offline" || s === "error").length;
-  overall.className = "overall s-" + (n ? "available" : bad ? "offline" : "current");
-  overall.textContent = n ? `${n} of 4 have an update` : bad ? "Couldn't check everything - see below" : "Everything is up to date";
-  document.getElementById("foot").textContent =
-    `Checked ${new Date().toLocaleString()} · live on GitHub (about 8 calls per check; 60 an hour per network).`;
-  btn.disabled = false;
-}
-
-document.getElementById("refresh").addEventListener("click", run);
-run();
+fetch("survey.json?t=" + Date.now()).then(r => { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); }).then(d => {
+  DATA = d;
+  document.getElementById("when").textContent = `Varredura de ${day(d.made)} ${(d.made || "").slice(11, 16)} · novidades desde ${day(d.since)}`;
+  renderOurs(d);
+  renderNew(d);
+  try { const t = localStorage.getItem("mgu-tab"); if (t) document.querySelector(`.tabs [data-tab="${t}"]`).click(); } catch (e) {}
+}).catch(err => {
+  document.getElementById("when").textContent = "Não consegui ler a varredura (" + err.message + ").";
+});
 </script>
 </body>
 </html>
