@@ -582,7 +582,9 @@
    "declined": "",
    "fork": false,
    "readme": "RideWatch\n\nYour home cameras on your BMW's centre screen while the car is parked.\n\nRideWatch runs on BMW iDrive 7 (MGU). One camera fills the left of the screen and the others sit live in a pane on\nthe right. When something happens (a ring at the door, a person, a car, an animal, a parcel), that camera takes the\nbig picture. A second tab lists the last few days of detections with a thumbnail each, and plays the clip from\nProtect.\n\nThe live view. A test stub draws these pictures; they are not real cameras.\n\nWhat happened: tap a row to play its clip.\n\nA person at the door camera takes over the big picture.\n\nThe car never talks to Protect directly. A small server on your home network (any Linux machine with ffmpeg) reads\nthe cameras over RTSPS, composes them into one H.264 stream at exactly the size of the car's screen, and keeps the\nlist of detections. The car reaches that server through a tunnel: WireGuard to your own server, or Tailscale.\n\nWhat changed in each version is in CHANGELOG.md.\n\nUniFi Protect, plug-and-play for your cameras\n\nPlug-and-play for your cameras: sign in to UniFi Protect once and every camera appears.\n\nWhat you still need\n\n\u2022 A Linux machine at home that stays on (details in What you need).\n\u2022 A local Protect user to sign in with. A ui.com account with two-step login cannot sign in here.\n\u2022 A tunnel tool on the car: jap-wireproxy (WireGuard) or IterioDev's Tailscale.\n\u2022 The server's address, typed once in the car's Settings.\n\u2022 For detections, clips and quick r\u2026",
-   "components": []
+   "components": [],
+   "pt": "RideWatch: c\u00e2meras de casa (UniFi Protect / qualquer RTSP) na tela central com o carro parado - uma c\u00e2mera grande \u00e0 esquerda, as outras ao vivo \u00e0 direita, e uma aba com as \u00faltimas detec\u00e7\u00f5es e clipes. O carro n\u00e3o fala direto com as c\u00e2meras: um servidorzinho em casa (Linux com ffmpeg) comp\u00f5e tudo num stream H.264 do tamanho da tela, e o carro chega nele por t\u00fanel (WireGuard/Tailscale). GPL-3.0, mesmo autor do RideTube. Nicho (precisa do servidor em casa + internet no carro), mas limpo.",
+   "status": "candidato"
   },
   {
    "repo": "JustAnotherPU/waze-hud",
@@ -642,7 +644,9 @@
      "kind": "tool",
      "title": "BMW AI Companion Agent"
     }
-   ]
+   ],
+   "pt": "Ponte do iDrive 7 para o ChatGPT: servi\u00e7o em segundo plano que conecta o carro a um ChatGPT privado via Tailscale/MCP, com aprova\u00e7\u00e3o do dono. Muito de infraestrutura (precisa de um Raspberry Pi/Docker + Tailscale), nicho, n\u00e3o \u00e9 um app de tela pronto para o usu\u00e1rio final. GPL-3.0.",
+   "status": "observar"
   }
  ],
  "wide": [
@@ -1367,7 +1371,9 @@
      "kind": "tool",
      "title": "BimmerVision Recorder"
     }
-   ]
+   ],
+   "pt": "BimmerVision: dashcam cont\u00ednua das 4 c\u00e2meras 360 gravando direto num pendrive USB; rev\u00ea as quatro c\u00e2meras juntas e exporta com telemetria, do celular ou do PC. O mais popular (19 estrelas). Problema: SEM LICEN\u00c7A declarada - teria que pedir autoriza\u00e7\u00e3o ao autor antes de distribuir. Usa o mesmo caminho das c\u00e2meras 360.",
+   "status": "observar"
   },
   {
    "repo": "AramayisAntonyan/EntryNav2-Android-Auto-800x480",
@@ -1443,7 +1449,9 @@
    "fork": false,
    "query": "idrive7",
    "readme": "Cluster+\n\nA Stock+ instrument cluster & windshield HUD experience for BMW iDrive 7\n\n> [!WARNING]\n> Work in Progress & Safety Disclaimer: This project is under active development \u2014 updates are frequent and may change or break existing functionality. It has only been tested on a BMW G30 (530e) with iDrive 7 and is not affiliated with, endorsed by, or supported by BMW. Everything is provided \"as is\" without warranty of any kind. Modifying vehicle displays can cause unexpected behavior or driver distraction \u2014 use entirely at your own risk.\n\nWhy Cluster+?\n\nInstead of replacing BMW's Live Cockpit with a completely different aftermarket skin, Cluster+ gives you a \"Stock+\" experience: it preserves BMW's native gauges, center navigation map, warning lights, and windshield HUD layout, while tucking extra real-time metrics and gauges into open space \u2014 both on the instrument cluster and on the windshield HUD.\n\nDriving view: live efficiency &amp; power below speed, active gear (D 6), climate-colored cabin temp (CABIN 71\u00b0F), hydraulic brake force bar (16 bar), Oil/Coolant temps, hybrid battery SOC 68% inside the sub-gauge, 12V 88%, and full-wing Now Playing widget with multi-language CJK &amp; Latin text.\n\nTire Pressure &amp; Smart Anomaly Alerts: live regenerative braking power (\u26a1 +12.4 kW), 4-wheel tire pressure &amp; temperature, automatic warning banners for tire, gearbox, or 12V anomalies mirrored onto the HUD, and steering-wheel BC button dismiss.\n\nWindshield HUD: full-width road ban\u2026",
-   "components": []
+   "components": [],
+   "pt": "Cluster+ (app cluster_metrics): um painel/HUD \"Stock+\" que mant\u00e9m os mostradores, o mapa e os avisos da BMW e encaixa m\u00e9tricas extras nos espa\u00e7os livres, usando o cluster-render do Robert (transparente sobre o original). Licen\u00e7a GPL-3.0. Testado num G30 530e. POR\u00c9M o build dele \u00e9 um subm\u00f3dulo git (um fork do idrive7-apps): nosso carregador baixa o repo como tarball e n\u00e3o traz subm\u00f3dulo, ent\u00e3o hoje o app seria pulado. Para incluir, teria que buildar com o nosso kit idrive7-apps embutido e testar no carro (ele configura um slot do cluster-render).",
+   "status": "observar"
   },
   {
    "repo": "DarkMuse1/idrive7-apps-ru",
@@ -1622,7 +1630,9 @@
    "fork": false,
    "query": "idrive7",
    "readme": "RideWatch\n\nYour home cameras on your BMW's centre screen while the car is parked.\n\nRideWatch runs on BMW iDrive 7 (MGU). One camera fills the left of the screen and the others sit live in a pane on\nthe right. When something happens (a ring at the door, a person, a car, an animal, a parcel), that camera takes the\nbig picture. A second tab lists the last few days of detections with a thumbnail each, and plays the clip from\nProtect.\n\nThe live view. A test stub draws these pictures; they are not real cameras.\n\nWhat happened: tap a row to play its clip.\n\nA person at the door camera takes over the big picture.\n\nThe car never talks to Protect directly. A small server on your home network (any Linux machine with ffmpeg) reads\nthe cameras over RTSPS, composes them into one H.264 stream at exactly the size of the car's screen, and keeps the\nlist of detections. The car reaches that server through a tunnel: WireGuard to your own server, or Tailscale.\n\nWhat changed in each version is in CHANGELOG.md.\n\nUniFi Protect, plug-and-play for your cameras\n\nPlug-and-play for your cameras: sign in to UniFi Protect once and every camera appears.\n\nWhat you still need\n\n\u2022 A Linux machine at home that stays on (details in What you need).\n\u2022 A local Protect user to sign in with. A ui.com account with two-step login cannot sign in here.\n\u2022 A tunnel tool on the car: jap-wireproxy (WireGuard) or IterioDev's Tailscale.\n\u2022 The server's address, typed once in the car's Settings.\n\u2022 For detections, clips and quick r\u2026",
-   "components": []
+   "components": [],
+   "pt": "RideWatch: c\u00e2meras de casa (UniFi Protect / qualquer RTSP) na tela central com o carro parado - uma c\u00e2mera grande \u00e0 esquerda, as outras ao vivo \u00e0 direita, e uma aba com as \u00faltimas detec\u00e7\u00f5es e clipes. O carro n\u00e3o fala direto com as c\u00e2meras: um servidorzinho em casa (Linux com ffmpeg) comp\u00f5e tudo num stream H.264 do tamanho da tela, e o carro chega nele por t\u00fanel (WireGuard/Tailscale). GPL-3.0, mesmo autor do RideTube. Nicho (precisa do servidor em casa + internet no carro), mas limpo.",
+   "status": "candidato"
   },
   {
    "repo": "NBTFoundry/manager",
@@ -1664,7 +1674,9 @@
    "fork": false,
    "query": "idrive7",
    "readme": "DPF Monitor for BMW iDrive 7\n\nRead-only diesel particulate filter monitoring app for BMW MGU (ID7).\n\nA standalone app for monitoring DPF conditions directly on the iDrive display. Developed and tested on a BMW X5 G05 25d; other vehicles and DDE variants have not been validated. Feel free to open an issue to fix eventual issues.\n\nFeatures\n\n\u2022 Overview with soot load and regeneration status.\n\u2022 Live Data with recent trends and optional raw diagnostic replies.\n\u2022 Regeneration history and demo mode.\n\u2022 Automatically starts with MGU in background (can be disabled in settings).\n\u2022 Regeneration notifications on Kombi (it needs cluter-renderer from MGU Store)\n\u2022 GPU rendering through the iDrive 7 Kit.\n\u2022 Optional experimental Regeneration page, disabled by default. Its action button is a non-functional placeholder a the moment; no regeneration request is sent. Will be implemented in v0.2.0\n\nScreenshots\n\nOverview\n\nLive Data\n\nRegeneration History\n\nNotifications on Kombi\n\nInstallation\n\nRequires the Idrive unit to be rooted and mgu-store to be installed, then add this line as a repo\n\nThe repository includes mgu-repo.json for source builds. The BMW OAP SDK is not distributed here.\n\nLocal development (Windows)\n\nRequirements: Python 3, Node.js and the OAP SDK obtained from your own MGU. Place the SDK in oap-sdk/ at the project root (including index.js and package.json). Never commit it.\n\nThe preview uses simulated data. The diagnostic test checks the read-only interface.\n\nWIP and experimental page\u2026",
-   "components": []
+   "components": [],
+   "pt": "Monitor de DPF (filtro de part\u00edculas diesel) nativo para o iDrive 7, com diagn\u00f3stico ao vivo e regenera\u00e7\u00e3o. S\u00f3 diesel - n\u00e3o oferecemos no Brasil.",
+   "status": "observar"
   },
   {
    "repo": "CallMeLewis/EntryNav-Apps",
@@ -1916,7 +1928,9 @@
      "kind": "app",
      "title": ""
     }
-   ]
+   ],
+   "pt": "Proven Performance: \u00e9 a c\u00f3pia do kit idrive7-apps com quatro apps - Proven Gauges e Proven Warm-Up (que j\u00e1 equivalem ao que oferecemos) mais Proven Drag e Proven Drift, que est\u00e3o em BETA e inst\u00e1veis (o pr\u00f3prio autor relata que a plataforma removeu o app depois de rodar). MIT. Em resumo, pouco de novo e o que \u00e9 novo n\u00e3o est\u00e1 maduro.",
+   "status": "j\u00e1 temos"
   },
   {
    "repo": "robbo73/BMW-NBT-Evo-Project",
@@ -1944,7 +1958,9 @@
    "fork": false,
    "query": "\"idrive 7\"",
    "readme": "Cockpit\n\nDriving data, performance timing, engine health, seats, a trip book and the ambient light: one app for the BMW MGU head unit (iDrive 7).\nDrawn by its own GPU renderer. It reads the car; the only things it changes are the seat positions and the ambient light.\n\nCockpit (called Combo until 2.7.0) puts the apps used most into tabs of one app, so the head unit runs one process and one diagnostic link instead\nof several. It is this repository's only app: a fork of\ncauliflowermossgrape/idrive7-apps, whose kit (renderer,\nruntime, build tools) it is built with. The source repo's own guide (how the head unit works, building, writing your own\napp) is in KIT.md.\n\nVersion 2.9.5. Developed and tested on a G26 M440i xDrive (B58 with the 48 V mild hybrid, ZF 8HP). Other cars\nwith the MGU should work for the values they send. The seats are tested on a G26's front seats only.\n\n> Cockpit moves the front seats with their own motors. It does this only while the car stands still, and stops at\n> once when a seat switch is pressed. It comes without warranty: you use it on your own car at your own risk. Not made\n> or supported by BMW.\n\nContents\n\n\u2022 The tabs\n\u2022 Screen layouts and controls\n\u2022 Settings (and only the tabs you need)\n\u2022 Install\n\u2022 What Cockpit reads, and what it doesn't do\n\u2022 Reporting a problem: the QR log (or the log uploaded to GitHub)\n\u2022 Development\n\u2022 How the seats were worked out\n\u2022 Thanks\n\u2022 Credits and licences\n\nThe tabs\n\nDriving\n\nThe car's live values in four columns of the same si\u2026",
-   "components": []
+   "components": [],
+   "pt": "Cockpit (app cockpit_combo): junta dados de condu\u00e7\u00e3o, performance, sa\u00fade do motor, bancos, di\u00e1rio de bordo e luz ambiente num app s\u00f3. Mexe nos bancos (motores, s\u00f3 parado) e na luz ambiente. O KIT em volta \u00e9 MIT, mas o APP Cockpit \u00e9 PolyForm Noncommercial 1.0.0: vender, instalar por pagamento ou usar num produto comercial precisa de autoriza\u00e7\u00e3o escrita do autor. Nosso Launcher \u00e9 pago, ent\u00e3o N\u00c3O podemos distribu\u00ed-lo sem essa autoriza\u00e7\u00e3o.",
+   "status": "recusado"
   },
   {
    "repo": "tjmodsss/tjm-waze",
@@ -1986,7 +2002,9 @@
    "fork": false,
    "query": "\"idrive 7\"",
    "readme": "Base Player\n\nPhone screen and sound on the BMW iDrive 7 (MGU) head unit: AirPlay for\niPhone (mirroring, music, direct video), DLNA for Android. English interface.\n\nBase Player is built from pllanaio/bmw-airplay\n(GPL-3.0-or-later, Copyright (C) 2026 Leon Pllana IT-Solutions): its receiver\nruntime and its app were copied into this repository and changed. What came\nfrom where is in NOTICE.md.\n\nWhat Base Player changes\n\n\u2022 It says why a video failed. The original reports every network failure\nas one code. Base Player tells apart: the car's clock is wrong and the\ncertificate looks expired, the certificate is not trusted, no internet, DNS,\nthe server refused, not found, unsupported format, decode error.\n\u2022 Optional tolerance for certificate dates. Where GNSS jamming throws the\nhead unit's clock years ahead, a setting forgives a certificate's dates\nonly. Chain, signature and host name are still verified. Off by default.\n\u2022 English interface through i18n.js. The font atlas covers Latin and\nCyrillic, so titles a phone sends in Ukrainian or Russian are drawn\n(0.2.2; before that they showed as question marks).\n\u2022 Nothing of another receiver is touched on install. The original stops,\ndisables and uninstalls an older runtime of its own; that is removed.\n\u2022 Its own name, mark and ids, so it installs beside nothing it would clash\nwith by name. It uses the same network ports as the original, so run one\nof the two.\n\nStatus\n\nInstalled through the MGU Store and used on one car: a BMW X3 G01 (2022,\ni\u2026",
-   "components": []
+   "components": [],
+   "pt": "Base Player: espelhar tela e som do celular no iDrive 7 - AirPlay (iPhone: espelho, m\u00fasica, v\u00eddeo) e DLNA (Android). Interface em ingl\u00eas. GPL-3.0, mas \u00e9 uma c\u00f3pia alterada do receiver de um terceiro (Leon Pllana IT-Solutions) - verificar proced\u00eancia antes. Cruza com o nosso plano de v\u00eddeo que est\u00e1 em pausa (\u00e1udio tem que sair pelos alto-falantes do carro).",
+   "status": "observar"
   },
   {
    "repo": "benspa900/mon-vitals-idrive7",
@@ -2156,7 +2174,9 @@
      "kind": "app",
      "title": ""
     }
-   ]
+   ],
+   "pt": "Flex Fuel e outros apps da Perea Performance como fonte do MGU Store. \u00c9 uma c\u00f3pia dos apps da Perea, que j\u00e1 oferecemos pelo alexpereap/pereaperformance. MIT.",
+   "status": "j\u00e1 temos"
   },
   {
    "repo": "ovcearsasha-svg/custom-logo",
