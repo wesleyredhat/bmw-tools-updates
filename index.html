@@ -94,7 +94,7 @@
 
   <section id="tab-ours"></section>
   <section id="tab-new" class="hide">
-    <input type="search" id="q" placeholder="Buscar (nome, descrição, licença)…" aria-label="Buscar">
+    <input type="search" id="q" placeholder="Buscar (nome, o que faz, README, licença)…" aria-label="Buscar">
     <div class="summary" id="filters"></div>
     <div id="list-new"></div>
   </section>
@@ -107,7 +107,7 @@ const gh = r => "https://github.com/" + r;
 const day = s => (s || "").slice(0, 10).split("-").reverse().join("/");
 const LIC_OK = /^(MIT|GPL|LGPL|AGPL|MPL|Apache|BSD|Unlicense|ISC|0BSD|CC0)/i;
 const NBT = /nbt|entrynav|entry ?evo|\bid[56]\b|idrive ?[56]\b|qnx|6wa|dkombi/i;
-const kind = r => NBT.test(r.repo + " " + (r.desc || "")) ? "NBT EVO" : "MGU";
+const kind = r => /NBT EVO/.test(r.status || "") || NBT.test(r.repo + " " + (r.desc || "")) ? "NBT EVO" : "MGU";
 const lic = l => !l || l === "none" || l === "NOASSERTION"
   ? '<span class="pill p-amber">SEM LICENÇA</span>'
   : `<span class="pill ${LIC_OK.test(l) ? "p-green" : "p-amber"}">${esc(l)}</span>`;
@@ -183,14 +183,28 @@ function renderOurs(d) {
   document.getElementById("n-ours").textContent = moved.length ? moved.length : "";
 }
 
+// our verdict on a repo (tools/survey-notes.json): the pill's colour
+const STATUS = s => /candidat/i.test(s) ? "p-green" : /recus|risco/i.test(s) ? "p-red" : /segur|observ|aguard/i.test(s) ? "p-amber"
+  : /já temos|ja temos|não é|nao e|fora/i.test(s) ? "p-grey" : "p-blue";
+
 function row(r) {
   const pills = [r.new ? '<span class="pill p-amber">NOVO</span>' : '<span class="pill p-grey">ATUALIZADO</span>',
                  lic(r.licence), `<span class="pill p-grey">★ ${r.stars}</span>`, `<span class="pill p-blue">${kind(r)}</span>`];
+  if (r.status) pills.unshift(`<span class="pill ${STATUS(r.status)}">${esc(r.status.toUpperCase())}</span>`);
   if (r.declined) pills.push(`<span class="pill p-red">RECUSADO: ${esc(r.declined)}</span>`);
+  // what it really is: our Portuguese summary first; else the README's own words; the GitHub one-liner last
+  const what = r.pt ? `<div class="desc">${esc(r.pt)}</div>`
+    : r.readme ? `<div class="desc">${esc(r.readme.split("\n").filter(x => x.trim()).slice(0, 3).join(" · ").slice(0, 360))}…</div>`
+    : `<div class="desc">${esc(r.desc || "(sem descrição nem README)")}</div>`;
+  const line = r.desc && (r.pt || r.readme) ? `<div class="meta" style="margin-top:4px">GitHub: ${esc(r.desc)}</div>` : "";
+  const comps = (r.components || []).length ? `<div class="meta" style="margin-top:4px">No MGU Store: ${r.components.map(c =>
+    `<span class="v">${esc(c.id)}</span>${c.kind === "app" ? "" : " (" + esc(c.kind) + ")"}`).join(", ")}</div>` : "";
+  const readme = r.readme ? `<details><summary>README original</summary><div class="quote">${esc(r.readme)}</div></details>` : "";
   return `<div class="${r.declined ? "declined" : ""}" style="margin-top:10px;padding-top:10px;border-top:1px solid var(--line)">
     <div class="name"><a href="${esc(gh(r.repo))}" target="_blank" rel="noopener">${esc(r.repo)}</a></div>
-    <div class="desc">${esc(r.desc || "(sem descrição)")}</div>
+    ${what}${line}${comps}
     <div class="pills">${pills.join("")}</div>
+    ${readme}
     <div class="meta" style="margin-top:6px">criado ${day(r.created)} · push ${day(r.pushed)}</div></div>`;
 }
 
@@ -200,7 +214,7 @@ function renderNew(d) {
   const q = document.getElementById("q").value.trim().toLowerCase();
   const list = all.filter(r => (!F.novo || r.new) && (!F.mgu || kind(r) === "MGU") && (!F.nbt || kind(r) === "NBT EVO") &&
     (!F.lic || LIC_OK.test(r.licence || "")) &&
-    (!q || (r.repo + " " + (r.desc || "") + " " + (r.licence || "")).toLowerCase().includes(q)));
+    (!q || [r.repo, r.desc, r.licence, r.pt, r.status, r.readme].join(" ").toLowerCase().includes(q)));
   const chip = (k, label, n) => `<button type="button" class="chip ${F[k] ? "on" : ""}" data-f="${k}">${label} (${n})</button>`;
   document.getElementById("filters").innerHTML =
     chip("novo", "Só novos", all.filter(r => r.new).length) + chip("mgu", "MGU", all.filter(r => kind(r) === "MGU").length) +
